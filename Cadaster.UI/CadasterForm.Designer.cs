@@ -321,6 +321,8 @@ namespace Cadaster.UI
 			// 
 			// comboBoxSex
 			// 
+			this.comboBoxSex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.comboBoxSex.FormattingEnabled = true;
 			this.comboBoxSex.Location = new System.Drawing.Point(180, 145);
 			this.comboBoxSex.Name = "comboBoxSex";

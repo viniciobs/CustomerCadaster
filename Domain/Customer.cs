@@ -26,7 +26,7 @@ namespace Domain
 
 		public string Street { get; set; }
 
-		public string Neighbor { get; set; }
+		public string Burgh { get; set; }
 
 		public string Number { get; set; }
 

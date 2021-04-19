@@ -71,10 +71,24 @@ namespace Cadaster.UI
 
 		private void Finish()
 		{
-			if (!Validate())
+			if (!Validate()) return;
+
+			var customer = new Customer()
 			{
-				return;
-			}
+				Name = textBoxName.Text,
+				Email = textBoxEmail.Text,
+				BirthDate = dateTimePickerBirthDate.Value,
+				DocumentType = (DocumentType)comboBoxDocumentType.SelectedItem,
+				Document = textBoxDocument.Text,
+				Phone = textBoxPhone.Text,
+				PostalCode = textBoxPostalCode.Text,
+				State = textBoxState.Text,
+				City = textBoxCity.Text,
+				Burgh = textBoxNeighbor.Text,
+				Street = textBoxStreet.Text,
+				Number = textBoxNumber.Text,
+				Complement = textBoxComplement.Text
+			};
 		}
 
 		private void Reset()
