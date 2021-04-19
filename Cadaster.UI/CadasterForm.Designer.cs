@@ -48,7 +48,7 @@ namespace Cadaster.UI
 			this.textBoxCity = new System.Windows.Forms.TextBox();
 			this.labelState = new System.Windows.Forms.Label();
 			this.labelCity = new System.Windows.Forms.Label();
-			this.labelNeighbor = new System.Windows.Forms.Label();
+			this.labelBurgh = new System.Windows.Forms.Label();
 			this.textBoxNeighbor = new System.Windows.Forms.TextBox();
 			this.labelDocumentType = new System.Windows.Forms.Label();
 			this.labelNumber = new System.Windows.Forms.Label();
@@ -60,6 +60,7 @@ namespace Cadaster.UI
 			this.buttonSave = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.textBoxState = new System.Windows.Forms.TextBox();
+			this.buttonSearchPostalCode = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// labelName
@@ -177,7 +178,7 @@ namespace Cadaster.UI
 			// 
 			this.textBoxPostalCode.Location = new System.Drawing.Point(26, 257);
 			this.textBoxPostalCode.Name = "textBoxPostalCode";
-			this.textBoxPostalCode.Size = new System.Drawing.Size(141, 23);
+			this.textBoxPostalCode.Size = new System.Drawing.Size(114, 23);
 			this.textBoxPostalCode.TabIndex = 8;
 			// 
 			// labelPostalCode
@@ -211,9 +212,9 @@ namespace Cadaster.UI
 			this.textBoxCity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.textBoxCity.Enabled = false;
-			this.textBoxCity.Location = new System.Drawing.Point(252, 257);
+			this.textBoxCity.Location = new System.Drawing.Point(274, 257);
 			this.textBoxCity.Name = "textBoxCity";
-			this.textBoxCity.Size = new System.Drawing.Size(146, 23);
+			this.textBoxCity.Size = new System.Drawing.Size(124, 23);
 			this.textBoxCity.TabIndex = 17;
 			// 
 			// labelState
@@ -221,7 +222,7 @@ namespace Cadaster.UI
 			this.labelState.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelState.AutoSize = true;
-			this.labelState.Location = new System.Drawing.Point(172, 239);
+			this.labelState.Location = new System.Drawing.Point(211, 239);
 			this.labelState.Name = "labelState";
 			this.labelState.Size = new System.Drawing.Size(39, 15);
 			this.labelState.TabIndex = 18;
@@ -232,22 +233,22 @@ namespace Cadaster.UI
 			this.labelCity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.labelCity.AutoSize = true;
-			this.labelCity.Location = new System.Drawing.Point(252, 239);
+			this.labelCity.Location = new System.Drawing.Point(274, 239);
 			this.labelCity.Name = "labelCity";
 			this.labelCity.Size = new System.Drawing.Size(34, 15);
 			this.labelCity.TabIndex = 19;
 			this.labelCity.Text = "City :";
 			// 
-			// labelNeighbor
+			// labelBurgh
 			// 
-			this.labelNeighbor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.labelBurgh.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelNeighbor.AutoSize = true;
-			this.labelNeighbor.Location = new System.Drawing.Point(404, 239);
-			this.labelNeighbor.Name = "labelNeighbor";
-			this.labelNeighbor.Size = new System.Drawing.Size(63, 15);
-			this.labelNeighbor.TabIndex = 21;
-			this.labelNeighbor.Text = "Neighbor :";
+			this.labelBurgh.AutoSize = true;
+			this.labelBurgh.Location = new System.Drawing.Point(404, 239);
+			this.labelBurgh.Name = "labelBurgh";
+			this.labelBurgh.Size = new System.Drawing.Size(45, 15);
+			this.labelBurgh.TabIndex = 21;
+			this.labelBurgh.Text = "Burgh :";
 			// 
 			// textBoxNeighbor
 			// 
@@ -354,17 +355,27 @@ namespace Cadaster.UI
 			// textBoxState
 			// 
 			this.textBoxState.Enabled = false;
-			this.textBoxState.Location = new System.Drawing.Point(172, 257);
+			this.textBoxState.Location = new System.Drawing.Point(211, 257);
 			this.textBoxState.MaxLength = 2;
 			this.textBoxState.Name = "textBoxState";
-			this.textBoxState.Size = new System.Drawing.Size(74, 23);
+			this.textBoxState.Size = new System.Drawing.Size(57, 23);
 			this.textBoxState.TabIndex = 32;
+			// 
+			// buttonSearchPostalCode
+			// 
+			this.buttonSearchPostalCode.Location = new System.Drawing.Point(140, 257);
+			this.buttonSearchPostalCode.Name = "buttonSearchPostalCode";
+			this.buttonSearchPostalCode.Size = new System.Drawing.Size(57, 23);
+			this.buttonSearchPostalCode.TabIndex = 33;
+			this.buttonSearchPostalCode.Text = "Search";
+			this.buttonSearchPostalCode.UseVisualStyleBackColor = true;
 			// 
 			// CadasterForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(643, 392);
+			this.Controls.Add(this.buttonSearchPostalCode);
 			this.Controls.Add(this.textBoxState);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonSave);
@@ -375,7 +386,7 @@ namespace Cadaster.UI
 			this.Controls.Add(this.labelComplement);
 			this.Controls.Add(this.labelNumber);
 			this.Controls.Add(this.labelDocumentType);
-			this.Controls.Add(this.labelNeighbor);
+			this.Controls.Add(this.labelBurgh);
 			this.Controls.Add(this.textBoxNeighbor);
 			this.Controls.Add(this.labelCity);
 			this.Controls.Add(this.labelState);
@@ -427,7 +438,7 @@ namespace Cadaster.UI
 		private System.Windows.Forms.Label labelState;
 		private System.Windows.Forms.Label labelCity;
 		private System.Windows.Forms.TextBox textBoxNeighbor;
-		private System.Windows.Forms.Label labelNeighbor;
+		private System.Windows.Forms.Label labelBurgh;
 		private System.Windows.Forms.Label labelDocumentType;
 		private System.Windows.Forms.Label labelNumber;
 		private System.Windows.Forms.Label labelComplement;
@@ -438,6 +449,7 @@ namespace Cadaster.UI
 		private System.Windows.Forms.Button buttonSave;
 		private System.Windows.Forms.Button buttonCancel;
 		private System.Windows.Forms.TextBox textBoxState;
+		private System.Windows.Forms.Button buttonSearchPostalCode;
 	}
 }
 
