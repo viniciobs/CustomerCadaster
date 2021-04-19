@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{74E821AB-14B7-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{879D0BE8-1276-411B-BE1F-20794BA6E824}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cadaster.UI", "Cadaster.UI\Cadaster.UI.csproj", "{0D219A9F-32F4-4A9B-96A1-15C71DCC9C6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,12 +21,17 @@ Global
 		{879D0BE8-1276-411B-BE1F-20794BA6E824}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{879D0BE8-1276-411B-BE1F-20794BA6E824}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{879D0BE8-1276-411B-BE1F-20794BA6E824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D219A9F-32F4-4A9B-96A1-15C71DCC9C6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D219A9F-32F4-4A9B-96A1-15C71DCC9C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D219A9F-32F4-4A9B-96A1-15C71DCC9C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D219A9F-32F4-4A9B-96A1-15C71DCC9C6B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{879D0BE8-1276-411B-BE1F-20794BA6E824} = {414BAF6D-8121-47F5-AAE7-4ACAB73D426B}
+		{0D219A9F-32F4-4A9B-96A1-15C71DCC9C6B} = {74E821AB-14B7-408E-8889-A4FA99424D88}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5E034023-840A-42FE-ADA0-1A2B5D4F4446}
