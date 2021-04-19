@@ -43,7 +43,6 @@ namespace Cadaster.UI
 			this.panelPhoto = new System.Windows.Forms.Panel();
 			this.textBoxPostalCode = new System.Windows.Forms.TextBox();
 			this.labelPostalCode = new System.Windows.Forms.Label();
-			this.comboBoxState = new System.Windows.Forms.ComboBox();
 			this.textBoxStreet = new System.Windows.Forms.TextBox();
 			this.labelStreet = new System.Windows.Forms.Label();
 			this.textBoxCity = new System.Windows.Forms.TextBox();
@@ -60,6 +59,7 @@ namespace Cadaster.UI
 			this.comboBoxSex = new System.Windows.Forms.ComboBox();
 			this.buttonSave = new System.Windows.Forms.Button();
 			this.buttonCancel = new System.Windows.Forms.Button();
+			this.textBoxState = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// labelName
@@ -89,7 +89,7 @@ namespace Cadaster.UI
 			this.textBoxEmail.Location = new System.Drawing.Point(26, 93);
 			this.textBoxEmail.Name = "textBoxEmail";
 			this.textBoxEmail.Size = new System.Drawing.Size(372, 23);
-			this.textBoxEmail.TabIndex = 3;
+			this.textBoxEmail.TabIndex = 2;
 			// 
 			// labelEmail
 			// 
@@ -107,7 +107,7 @@ namespace Cadaster.UI
 			this.textBoxPhone.Location = new System.Drawing.Point(26, 146);
 			this.textBoxPhone.Name = "textBoxPhone";
 			this.textBoxPhone.Size = new System.Drawing.Size(148, 23);
-			this.textBoxPhone.TabIndex = 5;
+			this.textBoxPhone.TabIndex = 3;
 			// 
 			// labelPhone
 			// 
@@ -123,7 +123,7 @@ namespace Cadaster.UI
 			this.textBoxDocument.Location = new System.Drawing.Point(26, 201);
 			this.textBoxDocument.Name = "textBoxDocument";
 			this.textBoxDocument.Size = new System.Drawing.Size(221, 23);
-			this.textBoxDocument.TabIndex = 7;
+			this.textBoxDocument.TabIndex = 6;
 			// 
 			// labelDocument
 			// 
@@ -142,7 +142,7 @@ namespace Cadaster.UI
 			this.comboBoxDocumentType.Location = new System.Drawing.Point(252, 201);
 			this.comboBoxDocumentType.Name = "comboBoxDocumentType";
 			this.comboBoxDocumentType.Size = new System.Drawing.Size(146, 23);
-			this.comboBoxDocumentType.TabIndex = 8;
+			this.comboBoxDocumentType.TabIndex = 7;
 			// 
 			// dateTimePickerBirthDate
 			// 
@@ -152,7 +152,7 @@ namespace Cadaster.UI
 			this.dateTimePickerBirthDate.Location = new System.Drawing.Point(252, 146);
 			this.dateTimePickerBirthDate.Name = "dateTimePickerBirthDate";
 			this.dateTimePickerBirthDate.Size = new System.Drawing.Size(146, 23);
-			this.dateTimePickerBirthDate.TabIndex = 9;
+			this.dateTimePickerBirthDate.TabIndex = 5;
 			// 
 			// labelBirthDate
 			// 
@@ -178,7 +178,7 @@ namespace Cadaster.UI
 			this.textBoxPostalCode.Location = new System.Drawing.Point(26, 257);
 			this.textBoxPostalCode.Name = "textBoxPostalCode";
 			this.textBoxPostalCode.Size = new System.Drawing.Size(141, 23);
-			this.textBoxPostalCode.TabIndex = 13;
+			this.textBoxPostalCode.TabIndex = 8;
 			// 
 			// labelPostalCode
 			// 
@@ -188,15 +188,6 @@ namespace Cadaster.UI
 			this.labelPostalCode.Size = new System.Drawing.Size(74, 15);
 			this.labelPostalCode.TabIndex = 12;
 			this.labelPostalCode.Text = "Postal code :";
-			// 
-			// comboBoxState
-			// 
-			this.comboBoxState.Enabled = false;
-			this.comboBoxState.FormattingEnabled = true;
-			this.comboBoxState.Location = new System.Drawing.Point(172, 257);
-			this.comboBoxState.Name = "comboBoxState";
-			this.comboBoxState.Size = new System.Drawing.Size(73, 23);
-			this.comboBoxState.TabIndex = 14;
 			// 
 			// textBoxStreet
 			// 
@@ -303,6 +294,7 @@ namespace Cadaster.UI
 			// 
 			this.textBoxNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBoxNumber.Enabled = false;
 			this.textBoxNumber.Location = new System.Drawing.Point(252, 311);
 			this.textBoxNumber.Name = "textBoxNumber";
 			this.textBoxNumber.Size = new System.Drawing.Size(105, 23);
@@ -312,10 +304,11 @@ namespace Cadaster.UI
 			// 
 			this.textBoxComplement.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.textBoxComplement.Enabled = false;
 			this.textBoxComplement.Location = new System.Drawing.Point(365, 310);
 			this.textBoxComplement.Name = "textBoxComplement";
 			this.textBoxComplement.Size = new System.Drawing.Size(250, 23);
-			this.textBoxComplement.TabIndex = 27;
+			this.textBoxComplement.TabIndex = 9;
 			// 
 			// labelSex
 			// 
@@ -332,7 +325,7 @@ namespace Cadaster.UI
 			this.comboBoxSex.Location = new System.Drawing.Point(180, 145);
 			this.comboBoxSex.Name = "comboBoxSex";
 			this.comboBoxSex.Size = new System.Drawing.Size(66, 23);
-			this.comboBoxSex.TabIndex = 29;
+			this.comboBoxSex.TabIndex = 4;
 			// 
 			// buttonSave
 			// 
@@ -340,9 +333,10 @@ namespace Cadaster.UI
 			this.buttonSave.Location = new System.Drawing.Point(459, 353);
 			this.buttonSave.Name = "buttonSave";
 			this.buttonSave.Size = new System.Drawing.Size(75, 23);
-			this.buttonSave.TabIndex = 30;
+			this.buttonSave.TabIndex = 10;
 			this.buttonSave.Text = "Save";
 			this.buttonSave.UseVisualStyleBackColor = true;
+			this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
 			// 
 			// buttonCancel
 			// 
@@ -353,12 +347,23 @@ namespace Cadaster.UI
 			this.buttonCancel.TabIndex = 31;
 			this.buttonCancel.Text = "Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
+			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+			// 
+			// textBoxState
+			// 
+			this.textBoxState.Enabled = false;
+			this.textBoxState.Location = new System.Drawing.Point(172, 257);
+			this.textBoxState.MaxLength = 2;
+			this.textBoxState.Name = "textBoxState";
+			this.textBoxState.Size = new System.Drawing.Size(74, 23);
+			this.textBoxState.TabIndex = 32;
 			// 
 			// CadasterForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(643, 392);
+			this.Controls.Add(this.textBoxState);
 			this.Controls.Add(this.buttonCancel);
 			this.Controls.Add(this.buttonSave);
 			this.Controls.Add(this.comboBoxSex);
@@ -375,7 +380,6 @@ namespace Cadaster.UI
 			this.Controls.Add(this.textBoxCity);
 			this.Controls.Add(this.textBoxStreet);
 			this.Controls.Add(this.labelStreet);
-			this.Controls.Add(this.comboBoxState);
 			this.Controls.Add(this.textBoxPostalCode);
 			this.Controls.Add(this.labelPostalCode);
 			this.Controls.Add(this.panelPhoto);
@@ -415,7 +419,6 @@ namespace Cadaster.UI
 		private System.Windows.Forms.Panel panelPhoto;
 		private System.Windows.Forms.TextBox textBoxPostalCode;
 		private System.Windows.Forms.Label labelPostalCode;
-		private System.Windows.Forms.ComboBox comboBoxState;
 		private System.Windows.Forms.TextBox textBoxStreet;
 		private System.Windows.Forms.Label labelStreet;
 		private System.Windows.Forms.TextBox textBoxCity;
@@ -432,6 +435,7 @@ namespace Cadaster.UI
 		private System.Windows.Forms.ComboBox comboBoxSex;
 		private System.Windows.Forms.Button buttonSave;
 		private System.Windows.Forms.Button buttonCancel;
+		private System.Windows.Forms.TextBox textBoxState;
 	}
 }
 
