@@ -5,6 +5,8 @@ namespace Cadaster.UI
 {
 	internal static class Program
 	{
+		#region Methods
+
 		[STAThread]
 		private static void Main()
 		{
@@ -13,5 +15,7 @@ namespace Cadaster.UI
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new CadasterForm());
 		}
+
+		#endregion Methods
 	}
 }

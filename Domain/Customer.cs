@@ -28,15 +28,14 @@ namespace Domain
 		public string Document { get; set; }
 
 		[Required]
-		[EnumDataType(typeof(DocumentType))]
+		[Column(TypeName = "TinyInt")]
 		public DocumentType DocumentType { get; set; }
 
 		[Required]
-		[DataType(DataType.DateTime)]
 		public DateTime BirthDate { get; set; }
 
 		[Required]
-		[EnumDataType(typeof(Sex))]
+		[Column(TypeName = "TinyInt")]
 		public Sex Sex { get; set; }
 
 		[Required]

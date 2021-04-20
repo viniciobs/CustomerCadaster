@@ -1,6 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Domain;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using System;
 
-namespace Domain.Context
+namespace Cadaster.UI
 {
 	public class CustomerContext : DbContext
 	{
@@ -14,18 +17,8 @@ namespace Domain.Context
 
 		public CustomerContext(DbContextOptions<CustomerContext> options)
 			: base(options)
-		{
-		}
+		{ }
 
 		#endregion Constructor
-
-		#region Methods
-
-		protected override void OnModelCreating(ModelBuilder modelBuilder)
-		{
-			modelBuilder.ApplyConfigurationsFromAssembly(typeof(CustomerContext).Assembly);
-		}
-
-		#endregion Methods
 	}
 }
