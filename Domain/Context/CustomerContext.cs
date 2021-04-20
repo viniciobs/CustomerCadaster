@@ -2,7 +2,7 @@
 
 namespace Domain.Context
 {
-	public class ApplicationContext : DbContext
+	public class CustomerContext : DbContext
 	{
 		#region Properties
 
@@ -12,7 +12,7 @@ namespace Domain.Context
 
 		#region Constructor
 
-		public ApplicationContext(DbContextOptions<ApplicationContext> options)
+		public CustomerContext(DbContextOptions<CustomerContext> options)
 			: base(options)
 		{
 		}
@@ -23,7 +23,7 @@ namespace Domain.Context
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationContext).Assembly);
+			modelBuilder.ApplyConfigurationsFromAssembly(typeof(CustomerContext).Assembly);
 		}
 
 		#endregion Methods
