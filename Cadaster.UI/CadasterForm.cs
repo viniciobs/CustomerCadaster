@@ -81,6 +81,7 @@ namespace Cadaster.UI
 				DocumentType = (DocumentType)comboBoxDocumentType.SelectedItem,
 				Document = textBoxDocument.Text,
 				Phone = textBoxPhone.Text,
+				Sex = (Sex)comboBoxSex.SelectedItem,
 				PostalCode = textBoxPostalCode.Text,
 				State = textBoxState.Text,
 				City = textBoxCity.Text,
