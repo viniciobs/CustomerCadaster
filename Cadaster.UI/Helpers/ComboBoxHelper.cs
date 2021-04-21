@@ -49,6 +49,8 @@ namespace Cadaster.UI.Helpers
 			comboBox.Items.AddRange(items.ToArray());
 
 			comboBox.EndUpdate();
+
+			comboBox.SelectedIndex = 0;
 		}
 
 		public static Nullable<T> GetSelectedItem<T>(this ComboBox comboBox) where T : struct, IConvertible
