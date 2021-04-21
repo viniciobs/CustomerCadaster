@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using Domain;
 using Cadaster.UI.Helpers;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace Cadaster.UI
 {
@@ -140,7 +141,7 @@ namespace Cadaster.UI
 			if (!Validate(labelPostalCode, Validator.ValidatePostalCode(postalCode))) return;
 
 			var addressController = new AddressController();
-			var address = await addressController.GetAddress(postalCode);
+			var address = await Task.Run(() => addressController.GetAddress(postalCode));
 
 			PopulateAddress(address);
 		}
@@ -156,8 +157,21 @@ namespace Cadaster.UI
 			textBoxComplement.Enabled = true;
 		}
 
-		private void Finish()
+		private async void Finish()
 		{
+			#region Inner Methods
+
+			void Save(Customer customer)
+			{
+				using (var context = new CustomerContext())
+				{
+					context.Entry(customer).State = EntityState.Added;
+					context.SaveChanges();
+				}
+			}
+
+			#endregion Inner Methods
+
 			if (!Validate()) return;
 
 			var customer = new Customer()
@@ -180,11 +194,7 @@ namespace Cadaster.UI
 
 			try
 			{
-				using (var context = new CustomerContext())
-				{
-					context.Entry(customer).State = EntityState.Added;
-					context.SaveChanges();
-				}
+				await Task.Run(() => Save(customer));
 
 				MessageBox.Show($"Customer \"{customer.Name}\" cadastered successfully", "Error", MessageBoxButtons.OK);
 				Reset();
