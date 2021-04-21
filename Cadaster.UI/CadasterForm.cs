@@ -29,7 +29,12 @@ namespace Cadaster.UI
 
 		private void buttonCancel_Click(object sender, EventArgs e)
 		{
-			Reset();
+			var result = MessageBox.Show("Are you sure you want to cancel?", "Confirm", MessageBoxButtons.YesNo);
+
+			if (result == DialogResult.Yes)
+			{
+				Reset();
+			}
 		}
 
 		private void buttonSearchPostalCode_Click(object sender, EventArgs e)
