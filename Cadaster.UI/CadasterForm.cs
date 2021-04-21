@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Domain;
+using Cadaster.UI.Helpers;
 
 namespace Cadaster.UI
 {
@@ -56,8 +57,8 @@ namespace Cadaster.UI
 
 		private void Populate()
 		{
-			comboBoxSex.DataSource = Enum.GetValues(typeof(Sex));
-			comboBoxDocumentType.DataSource = Enum.GetValues(typeof(DocumentType));
+			comboBoxSex.Populate<Sex>();
+			comboBoxDocumentType.Populate<DocumentType>();
 		}
 
 		private new bool Validate()
@@ -65,16 +66,22 @@ namespace Cadaster.UI
 			var isValid = Validate(labelName, !string.IsNullOrEmpty(textBoxName.Text));
 			isValid &= Validate(labelEmail, Validator.ValidateEmail(textBoxEmail.Text));
 			isValid &= Validate(labelPhone, Validator.ValidatePhone(textBoxPhone.Text));
+			isValid &= Validate(labelSex, comboBoxSex.GetSelectedItem<Sex>() != null);
 
-			var documentType = (DocumentType)comboBoxDocumentType.SelectedItem;
+			var documentType = comboBoxDocumentType.GetSelectedItem<DocumentType>();
 
-			if (documentType == DocumentType.CPF)
+			isValid &= Validate(labelDocumentType, documentType != null);
+
+			if (isValid)
 			{
-				isValid &= Validate(labelDocument, Validator.ValidateCPF(textBoxDocument.Text));
-			}
-			else
-			{
-				isValid &= Validate(labelDocument, Validator.ValidateCNPJ(textBoxDocument.Text));
+				if (documentType == DocumentType.CPF)
+				{
+					isValid &= Validate(labelDocument, Validator.ValidateCPF(textBoxDocument.Text));
+				}
+				else
+				{
+					isValid &= Validate(labelDocument, Validator.ValidateCNPJ(textBoxDocument.Text));
+				}
 			}
 
 			isValid &= Validate(labelPostalCode, Validator.ValidatePostalCode(textBoxPostalCode.Text));
@@ -98,10 +105,10 @@ namespace Cadaster.UI
 				Name = textBoxName.Text,
 				Email = textBoxEmail.Text,
 				BirthDate = dateTimePickerBirthDate.Value,
-				DocumentType = (DocumentType)comboBoxDocumentType.SelectedItem,
+				DocumentType = comboBoxDocumentType.GetSelectedItem<DocumentType>().Value,
 				Document = textBoxDocument.Text,
 				Phone = textBoxPhone.Text,
-				Sex = (Sex)comboBoxSex.SelectedItem,
+				Sex = comboBoxSex.GetSelectedItem<Sex>().Value,
 				PostalCode = textBoxPostalCode.Text,
 				State = textBoxState.Text,
 				City = textBoxCity.Text,
