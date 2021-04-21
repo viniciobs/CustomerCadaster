@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Domain
 {
 	[Table("Customers")]
-	public class Customer
+	public class Customer : Address
 	{
 		[Key]
 		[DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -37,28 +37,6 @@ namespace Domain
 		[Required]
 		[Column(TypeName = "TinyInt")]
 		public Sex Sex { get; set; }
-
-		[Required]
-		[MinLength(8), MaxLength(9)]
-		public string PostalCode { get; set; }
-
-		[Required]
-		public string City { get; set; }
-
-		[Required]
-		[StringLength(2)]
-		public string State { get; set; }
-
-		[Required]
-		public string Street { get; set; }
-
-		[Required]
-		public string Burgh { get; set; }
-
-		[Required]
-		public string Number { get; set; }
-
-		public string Complement { get; set; }
 
 		public byte[] Photo { get; set; }
 	}

@@ -3,18 +3,13 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System;
 
-namespace Cadaster.UI.Context
+namespace Cadaster.UI
 {
 	public class CustomerContextFactory : IDesignTimeDbContextFactory<CustomerContext>
 	{
 		public CustomerContext CreateDbContext(string[] args)
 		{
-			var configuration = new ConfigurationBuilder().SetBasePath(AppDomain.CurrentDomain.BaseDirectory).AddJsonFile("appsettings.json").Build();
-			var optionsBuilder = new DbContextOptionsBuilder<CustomerContext>();
-
-			optionsBuilder.UseSqlServer(configuration["ConnectionStrings:DbConn"]);
-
-			return new CustomerContext(optionsBuilder.Options);
+			return new CustomerContext(CustomerContextOptions.GetContextOptions());
 		}
 	}
 }

@@ -1,7 +1,5 @@
 ﻿using Domain;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
 
 namespace Cadaster.UI
 {
@@ -13,12 +11,17 @@ namespace Cadaster.UI
 
 		#endregion Properties
 
-		#region Constructor
+		#region Constructors
 
 		public CustomerContext(DbContextOptions<CustomerContext> options)
 			: base(options)
 		{ }
 
-		#endregion Constructor
+		public CustomerContext()
+			: base(CustomerContextOptions.GetContextOptions())
+		{
+		}
+
+		#endregion Constructors
 	}
 }
