@@ -301,7 +301,7 @@ namespace Cadaster.UI
 			this.textBoxNumber.Location = new System.Drawing.Point(252, 311);
 			this.textBoxNumber.Name = "textBoxNumber";
 			this.textBoxNumber.Size = new System.Drawing.Size(105, 23);
-			this.textBoxNumber.TabIndex = 26;
+			this.textBoxNumber.TabIndex = 9;
 			// 
 			// textBoxComplement
 			// 
@@ -311,7 +311,7 @@ namespace Cadaster.UI
 			this.textBoxComplement.Location = new System.Drawing.Point(365, 310);
 			this.textBoxComplement.Name = "textBoxComplement";
 			this.textBoxComplement.Size = new System.Drawing.Size(250, 23);
-			this.textBoxComplement.TabIndex = 9;
+			this.textBoxComplement.TabIndex = 10;
 			// 
 			// labelSex
 			// 
@@ -338,7 +338,7 @@ namespace Cadaster.UI
 			this.buttonSave.Location = new System.Drawing.Point(459, 353);
 			this.buttonSave.Name = "buttonSave";
 			this.buttonSave.Size = new System.Drawing.Size(75, 23);
-			this.buttonSave.TabIndex = 10;
+			this.buttonSave.TabIndex = 11;
 			this.buttonSave.Text = "&Save";
 			this.buttonSave.UseVisualStyleBackColor = true;
 			this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -349,7 +349,7 @@ namespace Cadaster.UI
 			this.buttonCancel.Location = new System.Drawing.Point(540, 353);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 31;
+			this.buttonCancel.TabIndex = 12;
 			this.buttonCancel.Text = "&Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);

@@ -128,19 +128,23 @@ namespace Cadaster.UI
 			textBoxCity.Text = string.Empty;
 			textBoxBurgh.Text = string.Empty;
 			textBoxStreet.Text = string.Empty;
+
+			textBoxNumber.Enabled = false;
 			textBoxNumber.Text = string.Empty;
+
+			textBoxComplement.Enabled = false;
 			textBoxComplement.Text = string.Empty;
 		}
 
-		private void FindAddress()
+		private async void FindAddress()
 		{
 			var postalCode = textBoxPostalCode.Text;
 			if (!Validate(labelPostalCode, Validator.ValidatePostalCode(postalCode))) return;
 
 			var addressController = new AddressController();
-			//var address = addressController.GetAddress(postalCode);
+			var address = await addressController.GetAddress(postalCode);
 
-			PopulateAddress(address.Result);
+			PopulateAddress(address);
 		}
 
 		private void PopulateAddress(Address address)
@@ -149,6 +153,9 @@ namespace Cadaster.UI
 			textBoxCity.Text = address.City;
 			textBoxBurgh.Text = address.Burgh;
 			textBoxStreet.Text = address.Street;
+
+			textBoxNumber.Enabled = true;
+			textBoxComplement.Enabled = true;
 		}
 
 		#endregion Methods
