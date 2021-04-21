@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using Domain;
 using Cadaster.UI.Helpers;
+using Microsoft.EntityFrameworkCore;
 
 namespace Cadaster.UI
 {
@@ -85,6 +86,11 @@ namespace Cadaster.UI
 			}
 
 			isValid &= Validate(labelPostalCode, Validator.ValidatePostalCode(textBoxPostalCode.Text));
+			isValid &= Validate(labelState, !string.IsNullOrEmpty(textBoxState.Text));
+			isValid &= Validate(labelCity, !string.IsNullOrEmpty(textBoxCity.Text));
+			isValid &= Validate(labelBurgh, !string.IsNullOrEmpty(textBoxBurgh.Text));
+			isValid &= Validate(labelStreet, !string.IsNullOrEmpty(textBoxStreet.Text));
+			isValid &= Validate(labelNumber, !string.IsNullOrEmpty(textBoxNumber.Text));
 
 			return isValid;
 		}
@@ -94,29 +100,6 @@ namespace Cadaster.UI
 			label.ForeColor = isValid ? Color.Black : Color.Red;
 
 			return isValid;
-		}
-
-		private void Finish()
-		{
-			if (!Validate()) return;
-
-			var customer = new Customer()
-			{
-				Name = textBoxName.Text,
-				Email = textBoxEmail.Text,
-				BirthDate = dateTimePickerBirthDate.Value,
-				DocumentType = comboBoxDocumentType.GetSelectedItem<DocumentType>().Value,
-				Document = textBoxDocument.Text,
-				Phone = textBoxPhone.Text,
-				Sex = comboBoxSex.GetSelectedItem<Sex>().Value,
-				PostalCode = textBoxPostalCode.Text,
-				State = textBoxState.Text,
-				City = textBoxCity.Text,
-				Burgh = textBoxBurgh.Text,
-				Street = textBoxStreet.Text,
-				Number = textBoxNumber.Text,
-				Complement = textBoxComplement.Text
-			};
 		}
 
 		private void Reset()
@@ -146,6 +129,9 @@ namespace Cadaster.UI
 
 			textBoxComplement.Enabled = false;
 			textBoxComplement.Text = string.Empty;
+
+			comboBoxSex.Populate<Sex>();
+			comboBoxDocumentType.Populate<DocumentType>();
 		}
 
 		private async void FindAddress()
@@ -168,6 +154,45 @@ namespace Cadaster.UI
 
 			textBoxNumber.Enabled = true;
 			textBoxComplement.Enabled = true;
+		}
+
+		private void Finish()
+		{
+			if (!Validate()) return;
+
+			var customer = new Customer()
+			{
+				Name = textBoxName.Text,
+				Email = textBoxEmail.Text,
+				BirthDate = dateTimePickerBirthDate.Value,
+				DocumentType = comboBoxDocumentType.GetSelectedItem<DocumentType>().Value,
+				Document = textBoxDocument.Text,
+				Phone = textBoxPhone.Text,
+				Sex = comboBoxSex.GetSelectedItem<Sex>().Value,
+				PostalCode = textBoxPostalCode.Text,
+				State = textBoxState.Text,
+				City = textBoxCity.Text,
+				Burgh = textBoxBurgh.Text,
+				Street = textBoxStreet.Text,
+				Number = textBoxNumber.Text,
+				Complement = textBoxComplement.Text
+			};
+
+			try
+			{
+				using (var context = new CustomerContext())
+				{
+					context.Entry(customer).State = EntityState.Added;
+					context.SaveChanges();
+				}
+
+				MessageBox.Show($"Customer \"{customer.Name}\" cadastered successfully", "Error", MessageBoxButtons.OK);
+				Reset();
+			}
+			catch (Exception exception)
+			{
+				MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK);
+			}
 		}
 
 		#endregion Methods
