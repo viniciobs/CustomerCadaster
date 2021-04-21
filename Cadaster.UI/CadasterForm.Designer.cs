@@ -37,7 +37,6 @@ namespace Cadaster.UI
 			this.labelPhone = new System.Windows.Forms.Label();
 			this.textBoxDocument = new System.Windows.Forms.TextBox();
 			this.labelDocument = new System.Windows.Forms.Label();
-			this.comboBoxDocumentType = new System.Windows.Forms.ComboBox();
 			this.dateTimePickerBirthDate = new System.Windows.Forms.DateTimePicker();
 			this.labelBirthDate = new System.Windows.Forms.Label();
 			this.panelPhoto = new System.Windows.Forms.Panel();
@@ -50,7 +49,6 @@ namespace Cadaster.UI
 			this.labelCity = new System.Windows.Forms.Label();
 			this.labelBurgh = new System.Windows.Forms.Label();
 			this.textBoxBurgh = new System.Windows.Forms.TextBox();
-			this.labelDocumentType = new System.Windows.Forms.Label();
 			this.labelNumber = new System.Windows.Forms.Label();
 			this.labelComplement = new System.Windows.Forms.Label();
 			this.textBoxNumber = new System.Windows.Forms.TextBox();
@@ -61,6 +59,8 @@ namespace Cadaster.UI
 			this.buttonCancel = new System.Windows.Forms.Button();
 			this.textBoxState = new System.Windows.Forms.TextBox();
 			this.buttonSearchPostalCode = new System.Windows.Forms.Button();
+			this.labelDocumentType = new System.Windows.Forms.Label();
+			this.comboBoxDocumentType = new System.Windows.Forms.ComboBox();
 			this.SuspendLayout();
 			// 
 			// labelName
@@ -121,29 +121,19 @@ namespace Cadaster.UI
 			// 
 			// textBoxDocument
 			// 
-			this.textBoxDocument.Location = new System.Drawing.Point(26, 201);
+			this.textBoxDocument.Location = new System.Drawing.Point(180, 201);
 			this.textBoxDocument.Name = "textBoxDocument";
-			this.textBoxDocument.Size = new System.Drawing.Size(221, 23);
+			this.textBoxDocument.Size = new System.Drawing.Size(218, 23);
 			this.textBoxDocument.TabIndex = 6;
 			// 
 			// labelDocument
 			// 
 			this.labelDocument.AutoSize = true;
-			this.labelDocument.Location = new System.Drawing.Point(26, 183);
+			this.labelDocument.Location = new System.Drawing.Point(180, 183);
 			this.labelDocument.Name = "labelDocument";
 			this.labelDocument.Size = new System.Drawing.Size(69, 15);
 			this.labelDocument.TabIndex = 6;
 			this.labelDocument.Text = "Document :";
-			// 
-			// comboBoxDocumentType
-			// 
-			this.comboBoxDocumentType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.comboBoxDocumentType.FormattingEnabled = true;
-			this.comboBoxDocumentType.Location = new System.Drawing.Point(252, 201);
-			this.comboBoxDocumentType.Name = "comboBoxDocumentType";
-			this.comboBoxDocumentType.Size = new System.Drawing.Size(146, 23);
-			this.comboBoxDocumentType.TabIndex = 7;
 			// 
 			// dateTimePickerBirthDate
 			// 
@@ -262,17 +252,6 @@ namespace Cadaster.UI
 			this.textBoxBurgh.Size = new System.Drawing.Size(211, 23);
 			this.textBoxBurgh.TabIndex = 20;
 			// 
-			// labelDocumentType
-			// 
-			this.labelDocumentType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelDocumentType.AutoSize = true;
-			this.labelDocumentType.Location = new System.Drawing.Point(252, 183);
-			this.labelDocumentType.Name = "labelDocumentType";
-			this.labelDocumentType.Size = new System.Drawing.Size(95, 15);
-			this.labelDocumentType.TabIndex = 22;
-			this.labelDocumentType.Text = "Document type :";
-			// 
 			// labelNumber
 			// 
 			this.labelNumber.AutoSize = true;
@@ -373,6 +352,27 @@ namespace Cadaster.UI
 			this.buttonSearchPostalCode.UseVisualStyleBackColor = true;
 			this.buttonSearchPostalCode.Click += new System.EventHandler(this.buttonSearchPostalCode_Click);
 			// 
+			// labelDocumentType
+			// 
+			this.labelDocumentType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelDocumentType.AutoSize = true;
+			this.labelDocumentType.Location = new System.Drawing.Point(26, 183);
+			this.labelDocumentType.Name = "labelDocumentType";
+			this.labelDocumentType.Size = new System.Drawing.Size(95, 15);
+			this.labelDocumentType.TabIndex = 35;
+			this.labelDocumentType.Text = "Document type :";
+			// 
+			// comboBoxDocumentType
+			// 
+			this.comboBoxDocumentType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.comboBoxDocumentType.FormattingEnabled = true;
+			this.comboBoxDocumentType.Location = new System.Drawing.Point(26, 201);
+			this.comboBoxDocumentType.Name = "comboBoxDocumentType";
+			this.comboBoxDocumentType.Size = new System.Drawing.Size(148, 23);
+			this.comboBoxDocumentType.TabIndex = 34;
+			// 
 			// CadasterForm
 			// 
 			this.AcceptButton = this.buttonSave;
@@ -380,6 +380,8 @@ namespace Cadaster.UI
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.buttonCancel;
 			this.ClientSize = new System.Drawing.Size(643, 392);
+			this.Controls.Add(this.labelDocumentType);
+			this.Controls.Add(this.comboBoxDocumentType);
 			this.Controls.Add(this.buttonSearchPostalCode);
 			this.Controls.Add(this.textBoxState);
 			this.Controls.Add(this.buttonCancel);
@@ -390,7 +392,6 @@ namespace Cadaster.UI
 			this.Controls.Add(this.textBoxNumber);
 			this.Controls.Add(this.labelComplement);
 			this.Controls.Add(this.labelNumber);
-			this.Controls.Add(this.labelDocumentType);
 			this.Controls.Add(this.labelBurgh);
 			this.Controls.Add(this.textBoxBurgh);
 			this.Controls.Add(this.labelCity);
@@ -403,7 +404,6 @@ namespace Cadaster.UI
 			this.Controls.Add(this.panelPhoto);
 			this.Controls.Add(this.labelBirthDate);
 			this.Controls.Add(this.dateTimePickerBirthDate);
-			this.Controls.Add(this.comboBoxDocumentType);
 			this.Controls.Add(this.textBoxDocument);
 			this.Controls.Add(this.labelDocument);
 			this.Controls.Add(this.textBoxPhone);
@@ -431,7 +431,6 @@ namespace Cadaster.UI
 		private System.Windows.Forms.Label labelPhone;
 		private System.Windows.Forms.TextBox textBoxDocument;
 		private System.Windows.Forms.Label labelDocument;
-		private System.Windows.Forms.ComboBox comboBoxDocumentType;
 		private System.Windows.Forms.DateTimePicker dateTimePickerBirthDate;
 		private System.Windows.Forms.Label labelBirthDate;
 		private System.Windows.Forms.Panel panelPhoto;
@@ -444,7 +443,6 @@ namespace Cadaster.UI
 		private System.Windows.Forms.Label labelCity;
 		private System.Windows.Forms.TextBox textBoxBurgh;
 		private System.Windows.Forms.Label labelBurgh;
-		private System.Windows.Forms.Label labelDocumentType;
 		private System.Windows.Forms.Label labelNumber;
 		private System.Windows.Forms.Label labelComplement;
 		private System.Windows.Forms.TextBox textBoxNumber;
@@ -455,6 +453,8 @@ namespace Cadaster.UI
 		private System.Windows.Forms.Button buttonCancel;
 		private System.Windows.Forms.TextBox textBoxState;
 		private System.Windows.Forms.Button buttonSearchPostalCode;
+		private System.Windows.Forms.Label labelDocumentType;
+		private System.Windows.Forms.ComboBox comboBoxDocumentType;
 	}
 }
 
