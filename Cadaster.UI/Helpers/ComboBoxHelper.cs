@@ -59,8 +59,8 @@ namespace Cadaster.UI.Helpers
 			if (Enum.TryParse<T>(item.Text, out T result)) return result;
 
 			return null;
-
-			#endregion Methods
 		}
+
+		#endregion Methods
 	}
 }
