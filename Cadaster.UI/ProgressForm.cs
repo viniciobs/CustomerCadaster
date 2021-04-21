@@ -25,8 +25,12 @@ namespace Cadaster.UI
 
 		#region Methods
 
-		private async Task<object> Execute()
+		public async Task<object> Execute()
 		{
+			progressBar.Value = 0;
+
+			var progress = new Progress<int>(value => { progressBar.Value = value; });
+
 			try
 			{
 				return await Task.Run(() => func.Invoke());

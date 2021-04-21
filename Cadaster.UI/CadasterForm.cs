@@ -196,7 +196,8 @@ namespace Cadaster.UI
 			{
 				await Task.Run(() => Save(customer));
 
-				MessageBox.Show($"Customer \"{customer.Name}\" cadastered successfully", "Error", MessageBoxButtons.OK);
+				MessageBox.Show($"Customer \"{customer.Name}\" cadastered successfully", "Success", MessageBoxButtons.OK);
+
 				Reset();
 			}
 			catch (Exception exception)
