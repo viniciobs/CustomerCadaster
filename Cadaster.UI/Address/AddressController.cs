@@ -9,6 +9,21 @@ namespace Cadaster.UI
 {
 	public class AddressController
 	{
+		#region Inner Type
+
+		private class ApiAddressResponse
+		{
+			public string Logradouro { get; set; }
+
+			public string Bairro { get; set; }
+
+			public string Localidade { get; set; }
+
+			public string UF { get; set; }
+		}
+
+		#endregion Inner Type
+
 		#region Fields
 
 		private const string ROUTE = "http://viacep.com.br/ws/{0}/json/";
@@ -38,14 +53,36 @@ namespace Cadaster.UI
 			{
 				var _response = await response.Content.ReadAsStringAsync();
 				var deserializerOptions = new JsonSerializerOptions() { PropertyNameCaseInsensitive = true };
+				var apiResponse = JsonSerializer.Deserialize<ApiAddressResponse>(_response, deserializerOptions);
 
-				return JsonSerializer.Deserialize<Address>(_response, deserializerOptions);
+				return Convert(apiResponse);
 			}
 		}
 
 		private string OnlyNumbers(string postalCode)
 		{
 			return Regex.Replace(postalCode, @"\D+", string.Empty);
+		}
+
+		#region DOcumentation
+
+		/// <summary>
+		/// ApiAddressResponse is a model based in the ViaCep API return.
+		/// </summary>
+		/// <param name="apiResponse">API response casted as ApiAddressResponse.</param>
+		/// <returns>The converted ApiAddressResponse to Domain.Address.</returns>
+
+		#endregion DOcumentation
+
+		private Address Convert(ApiAddressResponse apiResponse)
+		{
+			return new Address()
+			{
+				Burgh = apiResponse.Bairro,
+				City = apiResponse.Localidade,
+				State = apiResponse.UF,
+				Street = apiResponse.Logradouro
+			};
 		}
 
 		#endregion Methods

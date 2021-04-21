@@ -32,6 +32,21 @@ namespace Cadaster.UI
 			Reset();
 		}
 
+		private void buttonSearchPostalCode_Click(object sender, EventArgs e)
+		{
+			FindAddress();
+		}
+
+		private void textBoxPostalCode_Enter(object sender, EventArgs e)
+		{
+			AcceptButton = buttonSearchPostalCode;
+		}
+
+		private void textBoxPostalCode_Leave(object sender, EventArgs e)
+		{
+			AcceptButton = buttonSave;
+		}
+
 		#endregion Event Handlers
 
 		private void Populate()
@@ -85,7 +100,7 @@ namespace Cadaster.UI
 				PostalCode = textBoxPostalCode.Text,
 				State = textBoxState.Text,
 				City = textBoxCity.Text,
-				Burgh = textBoxNeighbor.Text,
+				Burgh = textBoxBurgh.Text,
 				Street = textBoxStreet.Text,
 				Number = textBoxNumber.Text,
 				Complement = textBoxComplement.Text
@@ -111,10 +126,29 @@ namespace Cadaster.UI
 
 			textBoxState.Text = string.Empty;
 			textBoxCity.Text = string.Empty;
-			textBoxNeighbor.Text = string.Empty;
+			textBoxBurgh.Text = string.Empty;
 			textBoxStreet.Text = string.Empty;
 			textBoxNumber.Text = string.Empty;
 			textBoxComplement.Text = string.Empty;
+		}
+
+		private void FindAddress()
+		{
+			var postalCode = textBoxPostalCode.Text;
+			if (!Validate(labelPostalCode, Validator.ValidatePostalCode(postalCode))) return;
+
+			var addressController = new AddressController();
+			//var address = addressController.GetAddress(postalCode);
+
+			PopulateAddress(address.Result);
+		}
+
+		private void PopulateAddress(Address address)
+		{
+			textBoxState.Text = address.State;
+			textBoxCity.Text = address.City;
+			textBoxBurgh.Text = address.Burgh;
+			textBoxStreet.Text = address.Street;
 		}
 
 		#endregion Methods
