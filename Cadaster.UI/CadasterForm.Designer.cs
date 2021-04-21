@@ -124,7 +124,7 @@ namespace Cadaster.UI
 			this.textBoxDocument.Location = new System.Drawing.Point(180, 201);
 			this.textBoxDocument.Name = "textBoxDocument";
 			this.textBoxDocument.Size = new System.Drawing.Size(218, 23);
-			this.textBoxDocument.TabIndex = 6;
+			this.textBoxDocument.TabIndex = 7;
 			// 
 			// labelDocument
 			// 
@@ -371,7 +371,7 @@ namespace Cadaster.UI
 			this.comboBoxDocumentType.Location = new System.Drawing.Point(26, 201);
 			this.comboBoxDocumentType.Name = "comboBoxDocumentType";
 			this.comboBoxDocumentType.Size = new System.Drawing.Size(148, 23);
-			this.comboBoxDocumentType.TabIndex = 34;
+			this.comboBoxDocumentType.TabIndex = 6;
 			// 
 			// CadasterForm
 			// 
