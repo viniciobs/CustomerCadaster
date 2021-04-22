@@ -38,9 +38,11 @@ namespace Cadaster.UI
 			this.columnHeaderDocument = new System.Windows.Forms.ColumnHeader();
 			this.labelEmpty = new System.Windows.Forms.Label();
 			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.toolStripMenuItemCadaster = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
 			this.buttonShow = new System.Windows.Forms.Button();
 			this.buttonCadaster = new System.Windows.Forms.Button();
+			this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItemShow = new System.Windows.Forms.ToolStripMenuItem();
 			this.contextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -106,18 +108,20 @@ namespace Cadaster.UI
 			// contextMenuStrip
 			// 
 			this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItemCadaster});
+            this.toolStripMenuItemNew,
+            this.toolStripMenuItemShow,
+            this.toolStripMenuItemDelete});
 			this.contextMenuStrip.Name = "contextMenuStrip";
 			this.contextMenuStrip.ShowImageMargin = false;
-			this.contextMenuStrip.Size = new System.Drawing.Size(121, 26);
+			this.contextMenuStrip.Size = new System.Drawing.Size(83, 70);
 			this.contextMenuStrip.Text = "&New cadaster";
 			this.contextMenuStrip.Click += new System.EventHandler(this.contextMenuStrip_Click);
 			// 
-			// toolStripMenuItemCadaster
+			// toolStripMenuItemNew
 			// 
-			this.toolStripMenuItemCadaster.Name = "toolStripMenuItemCadaster";
-			this.toolStripMenuItemCadaster.Size = new System.Drawing.Size(120, 22);
-			this.toolStripMenuItemCadaster.Text = "&New cadaster";
+			this.toolStripMenuItemNew.Name = "toolStripMenuItemNew";
+			this.toolStripMenuItemNew.Size = new System.Drawing.Size(82, 22);
+			this.toolStripMenuItemNew.Text = "&New";
 			// 
 			// buttonShow
 			// 
@@ -140,6 +144,18 @@ namespace Cadaster.UI
 			this.buttonCadaster.Text = "&New";
 			this.buttonCadaster.UseVisualStyleBackColor = true;
 			this.buttonCadaster.Click += new System.EventHandler(this.buttonCadaster_Click);
+			// 
+			// toolStripMenuItemDelete
+			// 
+			this.toolStripMenuItemDelete.Name = "toolStripMenuItemDelete";
+			this.toolStripMenuItemDelete.Size = new System.Drawing.Size(82, 22);
+			this.toolStripMenuItemDelete.Text = "&Delete";
+			// 
+			// toolStripMenuItemShow
+			// 
+			this.toolStripMenuItemShow.Name = "toolStripMenuItemShow";
+			this.toolStripMenuItemShow.Size = new System.Drawing.Size(82, 22);
+			this.toolStripMenuItemShow.Text = "&Show";
 			// 
 			// MainForm
 			// 
@@ -173,9 +189,11 @@ namespace Cadaster.UI
 		private System.Windows.Forms.ColumnHeader columnHeaderEmail;
 		private System.Windows.Forms.ColumnHeader columnHeaderDocument;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
-		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemCadaster;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNew;
 		private System.Windows.Forms.Button buttonShow;
 		private System.Windows.Forms.Button buttonNew;
 		private System.Windows.Forms.Button buttonCadaster;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemShow;
+		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDelete;
 	}
 }
