@@ -5,6 +5,7 @@ using Domain;
 using Cadaster.UI.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Cadaster.UI
 {
@@ -141,13 +142,18 @@ namespace Cadaster.UI
 
 			Address address = null;
 
-			new ProgressForm(() =>
-		   {
-			   var addressController = new AddressController();
-			   address = addressController.GetAddress(postalCode).Result;
-		   }).ShowDialog();
+			var form = new ProgressForm(() =>
+			{
+				var addressController = new AddressController();
+				address = addressController.GetAddress(postalCode).Result;
+			});
 
-			PopulateAddress(address);
+			var result = form.ShowDialog(this);
+
+			if (result == DialogResult.OK)
+			{
+				PopulateAddress(address);
+			}
 		}
 
 		private void PopulateAddress(Address address)
@@ -185,24 +191,24 @@ namespace Cadaster.UI
 				Complement = textBoxComplement.Text
 			};
 
-			try
+			var form = new ProgressForm(() =>
 			{
-				new ProgressForm(() =>
+				using (var context = new CustomerContext())
 				{
-					using (var context = new CustomerContext())
-					{
-						context.Entry(customer).State = EntityState.Added;
-						context.SaveChanges();
-					}
-				}).ShowDialog();
+					var customerExists = context.Customer.AsEnumerable().Any(x => x.Document.OnlyNumbers() == customer.Document.OnlyNumbers());
+					if (customerExists) throw new Exception($"There's already a customer in the database with the document {customer.Document}");
 
-				MessageBox.Show($"Customer \"{customer.Name}\" cadastered successfully", "Success", MessageBoxButtons.OK);
+					context.Entry(customer).State = EntityState.Added;
+					context.SaveChanges();
+				}
+			});
 
-				Reset();
-			}
-			catch (Exception exception)
+			var result = form.ShowDialog(this);
+
+			if (result == DialogResult.OK)
 			{
-				MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK);
+				MessageBox.Show($"Customer \"{customer.Name}\" cadastered successfully", "Success", MessageBoxButtons.OK);
+				Reset();
 			}
 		}
 

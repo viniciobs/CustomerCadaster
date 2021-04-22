@@ -2,7 +2,7 @@
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text.Json;
-using System.Text.RegularExpressions;
+using Cadaster.UI.Helpers;
 using System.Threading.Tasks;
 
 namespace Cadaster.UI
@@ -47,7 +47,7 @@ namespace Cadaster.UI
 
 		public async Task<Address> GetAddress(string postalCode)
 		{
-			var route = string.Format(ROUTE, OnlyNumbers(postalCode));
+			var route = string.Format(ROUTE, postalCode.OnlyNumbers());
 
 			using (var response = await client.GetAsync(route))
 			{
@@ -57,11 +57,6 @@ namespace Cadaster.UI
 
 				return Convert(apiResponse);
 			}
-		}
-
-		private string OnlyNumbers(string postalCode)
-		{
-			return Regex.Replace(postalCode, @"\D+", string.Empty);
 		}
 
 		#region DOcumentation
