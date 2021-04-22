@@ -65,42 +65,37 @@ namespace Cadaster.UI
 
 		private new bool Validate()
 		{
-			var isValid = Validate(labelName, !string.IsNullOrEmpty(textBoxName.Text));
-			isValid &= Validate(labelEmail, Validator.ValidateEmail(textBoxEmail.Text));
-			isValid &= Validate(labelPhone, Validator.ValidatePhone(textBoxPhone.Text));
-			isValid &= Validate(labelSex, comboBoxSex.GetSelectedItem<Sex>() != null);
+			var validation = new Validation();
+
+			validation.Validate(labelName, !string.IsNullOrEmpty(textBoxName.Text));
+			validation.Validate(labelEmail, Validator.ValidateEmail(textBoxEmail.Text));
+			validation.Validate(labelPhone, Validator.ValidatePhone(textBoxPhone.Text));
+			validation.Validate(labelSex, comboBoxSex.GetSelectedItem<Sex>() != null);
 
 			var documentType = comboBoxDocumentType.GetSelectedItem<DocumentType>();
 
-			isValid &= Validate(labelDocumentType, documentType != null);
+			validation.Validate(labelDocumentType, documentType != null);
 
-			if (isValid)
+			if (documentType != null)
 			{
 				if (documentType == DocumentType.CPF)
 				{
-					isValid &= Validate(labelDocument, Validator.ValidateCPF(textBoxDocument.Text));
+					validation.Validate(labelDocument, Validator.ValidateCPF(textBoxDocument.Text));
 				}
 				else
 				{
-					isValid &= Validate(labelDocument, Validator.ValidateCNPJ(textBoxDocument.Text));
+					validation.Validate(labelDocument, Validator.ValidateCNPJ(textBoxDocument.Text));
 				}
 			}
 
-			isValid &= Validate(labelPostalCode, Validator.ValidatePostalCode(textBoxPostalCode.Text));
-			isValid &= Validate(labelState, !string.IsNullOrEmpty(textBoxState.Text));
-			isValid &= Validate(labelCity, !string.IsNullOrEmpty(textBoxCity.Text));
-			isValid &= Validate(labelBurgh, !string.IsNullOrEmpty(textBoxBurgh.Text));
-			isValid &= Validate(labelStreet, !string.IsNullOrEmpty(textBoxStreet.Text));
-			isValid &= Validate(labelNumber, !string.IsNullOrEmpty(textBoxNumber.Text));
+			validation.Validate(labelPostalCode, Validator.ValidatePostalCode(textBoxPostalCode.Text));
+			validation.Validate(labelState, !string.IsNullOrEmpty(textBoxState.Text));
+			validation.Validate(labelCity, !string.IsNullOrEmpty(textBoxCity.Text));
+			validation.Validate(labelBurgh, !string.IsNullOrEmpty(textBoxBurgh.Text));
+			validation.Validate(labelStreet, !string.IsNullOrEmpty(textBoxStreet.Text));
+			validation.Validate(labelNumber, !string.IsNullOrEmpty(textBoxNumber.Text));
 
-			return isValid;
-		}
-
-		private bool Validate(Label label, bool isValid)
-		{
-			label.ForeColor = isValid ? Color.Black : Color.Red;
-
-			return isValid;
+			return validation.IsValid;
 		}
 
 		private void Reset()
@@ -138,7 +133,11 @@ namespace Cadaster.UI
 		private void FindAddress()
 		{
 			var postalCode = textBoxPostalCode.Text;
-			if (!Validate(labelPostalCode, Validator.ValidatePostalCode(postalCode))) return;
+			var validation = new Validation();
+
+			validation.Validate(labelPostalCode, Validator.ValidatePostalCode(postalCode));
+
+			if (!validation.IsValid) return;
 
 			Address address = null;
 
