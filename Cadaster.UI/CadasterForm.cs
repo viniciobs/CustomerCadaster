@@ -11,13 +11,17 @@ namespace Cadaster.UI
 {
 	public partial class CadasterForm : Form
 	{
+		#region Properties
+
+		public Customer Customer { get; set; }
+
+		#endregion Properties
+
 		#region Constructor
 
 		public CadasterForm()
 		{
 			InitializeComponent();
-
-			Populate();
 		}
 
 		#endregion Constructor
@@ -56,12 +60,35 @@ namespace Cadaster.UI
 			AcceptButton = buttonSave;
 		}
 
+		protected override void OnLoad(EventArgs e)
+		{
+			base.OnLoad(e);
+
+			Populate();
+		}
+
 		#endregion Event Handlers
 
 		private void Populate()
 		{
+			textBoxName.Text = Customer.Name;
+			textBoxEmail.Text = Customer.Email;
+			textBoxPhone.Text = Customer.Phone;
+			textBoxDocument.Text = Customer.Document;
+
 			comboBoxSex.Populate<Sex>();
 			comboBoxDocumentType.Populate<DocumentType>();
+
+			textBoxPostalCode.Text = Customer.PostalCode;
+			textBoxState.Text = Customer.State;
+			textBoxCity.Text = Customer.City;
+			textBoxBurgh.Text = Customer.Burgh;
+			textBoxStreet.Text = Customer.Street;
+			textBoxNumber.Text = Customer.Number;
+			textBoxComplement.Text = Customer.Complement;
+
+			textBoxNumber.Enabled = string.IsNullOrEmpty(Customer.City);
+			textBoxComplement.Enabled = string.IsNullOrEmpty(Customer.City);
 		}
 
 		private new bool Validate()
@@ -101,34 +128,15 @@ namespace Cadaster.UI
 
 		private void Reset()
 		{
+			Customer = new Customer();
+
 			labelName.ForeColor = Color.Black;
-			textBoxName.Text = string.Empty;
-
 			labelEmail.ForeColor = Color.Black;
-			textBoxEmail.Text = string.Empty;
-
 			labelPhone.ForeColor = Color.Black;
-			textBoxPhone.Text = string.Empty;
-
 			labelDocument.ForeColor = Color.Black;
-			textBoxDocument.Text = string.Empty;
-
 			labelPostalCode.ForeColor = Color.Black;
-			textBoxPostalCode.Text = string.Empty;
 
-			textBoxState.Text = string.Empty;
-			textBoxCity.Text = string.Empty;
-			textBoxBurgh.Text = string.Empty;
-			textBoxStreet.Text = string.Empty;
-
-			textBoxNumber.Enabled = false;
-			textBoxNumber.Text = string.Empty;
-
-			textBoxComplement.Enabled = false;
-			textBoxComplement.Text = string.Empty;
-
-			comboBoxSex.Populate<Sex>();
-			comboBoxDocumentType.Populate<DocumentType>();
+			Populate();
 		}
 
 		private void FindAddress()

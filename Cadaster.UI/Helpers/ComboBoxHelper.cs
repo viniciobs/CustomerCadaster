@@ -32,11 +32,10 @@ namespace Cadaster.UI.Helpers
 
 		#region Methods
 
-		public static void Populate<T>(this ComboBox comboBox, bool hasNullOption = true) where T : Enum
+		public static void Populate<T>(this ComboBox comboBox) where T : Enum
 		{
 			var items = new List<ComboBoxItem>();
-
-			if (hasNullOption) items.Add(new ComboBoxItem() { Value = null, Text = string.Empty });
+			items.Add(new ComboBoxItem() { Value = null, Text = string.Empty });
 
 			foreach (var item in Enum.GetValues(typeof(T)))
 			{
