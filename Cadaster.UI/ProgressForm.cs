@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Cadaster.UI
@@ -8,39 +8,44 @@ namespace Cadaster.UI
 	{
 		#region Fields
 
-		private Func<object> func;
+		private readonly MethodInvoker method;
 
 		#endregion Fields
 
 		#region Constructor
 
-		public ProgressForm(Func<object> func)
+		public ProgressForm(MethodInvoker action)
 		{
-			this.func = func;
-
 			InitializeComponent();
+			StartPosition = FormStartPosition.CenterParent;
+
+			if (action == null) throw new ArgumentNullException(nameof(action));
+			method = action;
 		}
 
 		#endregion Constructor
 
 		#region Methods
 
-		public async Task<object> Execute()
+		#region Event handlers
+
+		private void ProgressForm_Load(object sender, EventArgs e)
 		{
-			progressBar.Value = 0;
+			new Thread(() => { method.Invoke(); InvokeAction(this, Dispose); }).Start();
+		}
 
-			var progress = new Progress<int>(value => { progressBar.Value = value; });
+		#endregion Event handlers
 
-			try
+		public static void InvokeAction(Control control, MethodInvoker action)
+		{
+			if (control.InvokeRequired)
 			{
-				return await Task.Run(() => func.Invoke());
+				control.BeginInvoke(action);
 			}
-			catch (Exception exception)
+			else
 			{
-				MessageBox.Show(exception.Message, "Error", MessageBoxButtons.OK);
+				action();
 			}
-
-			return null;
 		}
 
 		#endregion Methods

@@ -135,19 +135,26 @@ namespace Cadaster.UI
 			comboBoxDocumentType.Populate<DocumentType>();
 		}
 
-		private async void FindAddress()
+		private void FindAddress()
 		{
 			var postalCode = textBoxPostalCode.Text;
 			if (!Validate(labelPostalCode, Validator.ValidatePostalCode(postalCode))) return;
 
-			var addressController = new AddressController();
-			var address = await Task.Run(() => addressController.GetAddress(postalCode));
+			Address address = null;
+
+			new ProgressForm(() =>
+		   {
+			   var addressController = new AddressController();
+			   address = addressController.GetAddress(postalCode).Result;
+		   }).ShowDialog();
 
 			PopulateAddress(address);
 		}
 
 		private void PopulateAddress(Address address)
 		{
+			if (address == null) return;
+
 			textBoxState.Text = address.State;
 			textBoxCity.Text = address.City;
 			textBoxBurgh.Text = address.Burgh;
@@ -157,21 +164,8 @@ namespace Cadaster.UI
 			textBoxComplement.Enabled = true;
 		}
 
-		private async void Finish()
+		private void Finish()
 		{
-			#region Inner Methods
-
-			void Save(Customer customer)
-			{
-				using (var context = new CustomerContext())
-				{
-					context.Entry(customer).State = EntityState.Added;
-					context.SaveChanges();
-				}
-			}
-
-			#endregion Inner Methods
-
 			if (!Validate()) return;
 
 			var customer = new Customer()
@@ -194,7 +188,14 @@ namespace Cadaster.UI
 
 			try
 			{
-				await Task.Run(() => Save(customer));
+				new ProgressForm(() =>
+				{
+					using (var context = new CustomerContext())
+					{
+						context.Entry(customer).State = EntityState.Added;
+						context.SaveChanges();
+					}
+				}).ShowDialog();
 
 				MessageBox.Show($"Customer \"{customer.Name}\" cadastered successfully", "Success", MessageBoxButtons.OK);
 
