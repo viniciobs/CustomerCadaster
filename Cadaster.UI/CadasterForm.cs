@@ -115,6 +115,7 @@ namespace Cadaster.UI
 			validation.Validate(labelName, !string.IsNullOrEmpty(textBoxName.Text));
 			validation.Validate(labelEmail, Validator.ValidateEmail(textBoxEmail.Text));
 			validation.Validate(labelPhone, Validator.ValidatePhone(textBoxPhone.Text));
+			validation.Validate(labelBirthDate, dateTimePickerBirthDate.Value.ToInitial() < DateTime.Today);
 			validation.Validate(labelSex, comboBoxSex.GetSelectedItem<Sex>() != null);
 
 			var documentType = comboBoxDocumentType.GetSelectedItem<DocumentType>();
@@ -206,7 +207,7 @@ namespace Cadaster.UI
 
 			Customer.Name = textBoxName.Text;
 			Customer.Email = textBoxEmail.Text;
-			Customer.BirthDate = dateTimePickerBirthDate.Value;
+			Customer.BirthDate = dateTimePickerBirthDate.Value.ToInitial();
 			Customer.DocumentType = comboBoxDocumentType.GetSelectedItem<DocumentType>().Value;
 			Customer.Document = textBoxDocument.Text;
 			Customer.Phone = textBoxPhone.Text;
