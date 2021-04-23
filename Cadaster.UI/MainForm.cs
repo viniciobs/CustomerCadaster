@@ -41,6 +41,11 @@ namespace Cadaster.UI
 			ShowCustomer();
 		}
 
+		private void toolStripMenuItemShow_Click(object sender, EventArgs e)
+		{
+			ShowCustomer();
+		}
+
 		private void contextMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
 		{
 			var hasCustomerSelected = listView.SelectedItems.Count > 0;
@@ -51,11 +56,12 @@ namespace Cadaster.UI
 
 		private void buttonCadaster_Click(object sender, EventArgs e)
 		{
-			var customer = new Customer();
-			var form = new CadasterForm();
-			form.Customer = customer;
+			New();
+		}
 
-			form.ShowDialog();
+		private void toolStripMenuItemNew_Click(object sender, EventArgs e)
+		{
+			New();
 		}
 
 		#endregion Event Handlers
@@ -110,6 +116,19 @@ namespace Cadaster.UI
 			form.Customer = (Customer)selected.Tag;
 
 			form.Show();
+		}
+
+		private void New()
+		{
+			var customer = new Customer();
+			var form = new CadasterForm();
+			form.Customer = customer;
+
+			form.ShowDialog();
+		}
+
+		private void Delete()
+		{
 		}
 
 		#endregion Methods

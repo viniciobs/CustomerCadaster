@@ -124,12 +124,14 @@ namespace Cadaster.UI
 			this.toolStripMenuItemNew.Name = "toolStripMenuItemNew";
 			this.toolStripMenuItemNew.Size = new System.Drawing.Size(82, 22);
 			this.toolStripMenuItemNew.Text = "&New";
+			this.toolStripMenuItemNew.Click += new System.EventHandler(this.toolStripMenuItemNew_Click);
 			// 
 			// toolStripMenuItemShow
 			// 
 			this.toolStripMenuItemShow.Name = "toolStripMenuItemShow";
 			this.toolStripMenuItemShow.Size = new System.Drawing.Size(82, 22);
 			this.toolStripMenuItemShow.Text = "&Show";
+			this.toolStripMenuItemShow.Click += new System.EventHandler(this.toolStripMenuItemShow_Click);
 			// 
 			// toolStripMenuItemDelete
 			// 
