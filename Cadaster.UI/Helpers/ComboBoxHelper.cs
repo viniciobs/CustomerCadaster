@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Cadaster.UI.Helpers
@@ -52,7 +53,7 @@ namespace Cadaster.UI.Helpers
 			comboBox.SelectedIndex = 0;
 		}
 
-		public static Nullable<T> GetSelectedItem<T>(this ComboBox comboBox) where T : struct, IConvertible
+		public static Nullable<T> GetSelectedItem<T>(this ComboBox comboBox) where T : struct, Enum, IConvertible
 		{
 			var item = (ComboBoxItem)comboBox.SelectedItem;
 			if (item?.Text == null) return null;
@@ -60,6 +61,14 @@ namespace Cadaster.UI.Helpers
 			if (Enum.TryParse<T>(item.Text, out T result)) return result;
 
 			return null;
+		}
+
+		public static void SelectItem<T>(this ComboBox comboBox, T selectedItem) where T : Enum
+		{
+			var item = comboBox.Items.Cast<ComboBoxItem>().FirstOrDefault(x => x.Text == selectedItem.ToString());
+			if (item == null) return;
+
+			comboBox.SelectedItem = item;
 		}
 
 		#endregion Methods

@@ -71,6 +71,8 @@ namespace Cadaster.UI
 
 		private void Populate()
 		{
+			var isNew = Customer.Id == default(int);
+
 			textBoxName.Text = Customer.Name;
 			textBoxEmail.Text = Customer.Email;
 			textBoxPhone.Text = Customer.Phone;
@@ -78,6 +80,12 @@ namespace Cadaster.UI
 
 			comboBoxSex.Populate<Sex>();
 			comboBoxDocumentType.Populate<DocumentType>();
+
+			if (!isNew)
+			{
+				comboBoxSex.SelectItem(Customer.Sex);
+				comboBoxDocumentType.SelectItem(Customer.DocumentType);
+			}
 
 			textBoxPostalCode.Text = Customer.PostalCode;
 			textBoxState.Text = Customer.State;
