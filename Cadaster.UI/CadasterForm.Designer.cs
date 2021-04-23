@@ -92,7 +92,7 @@ namespace Cadaster.UI
 			this.textBoxEmail.Location = new System.Drawing.Point(26, 144);
 			this.textBoxEmail.Name = "textBoxEmail";
 			this.textBoxEmail.Size = new System.Drawing.Size(372, 23);
-			this.textBoxEmail.TabIndex = 2;
+			this.textBoxEmail.TabIndex = 3;
 			// 
 			// labelEmail
 			// 
@@ -110,7 +110,7 @@ namespace Cadaster.UI
 			this.textBoxPhone.Location = new System.Drawing.Point(26, 197);
 			this.textBoxPhone.Name = "textBoxPhone";
 			this.textBoxPhone.Size = new System.Drawing.Size(148, 23);
-			this.textBoxPhone.TabIndex = 3;
+			this.textBoxPhone.TabIndex = 4;
 			// 
 			// labelPhone
 			// 
@@ -126,7 +126,7 @@ namespace Cadaster.UI
 			this.textBoxDocument.Location = new System.Drawing.Point(180, 252);
 			this.textBoxDocument.Name = "textBoxDocument";
 			this.textBoxDocument.Size = new System.Drawing.Size(218, 23);
-			this.textBoxDocument.TabIndex = 7;
+			this.textBoxDocument.TabIndex = 8;
 			// 
 			// labelDocument
 			// 
@@ -143,7 +143,7 @@ namespace Cadaster.UI
 			this.dateTimePickerBirthDate.Location = new System.Drawing.Point(252, 197);
 			this.dateTimePickerBirthDate.Name = "dateTimePickerBirthDate";
 			this.dateTimePickerBirthDate.Size = new System.Drawing.Size(146, 23);
-			this.dateTimePickerBirthDate.TabIndex = 5;
+			this.dateTimePickerBirthDate.TabIndex = 6;
 			// 
 			// labelBirthDate
 			// 
@@ -169,7 +169,7 @@ namespace Cadaster.UI
 			this.textBoxPostalCode.Location = new System.Drawing.Point(26, 308);
 			this.textBoxPostalCode.Name = "textBoxPostalCode";
 			this.textBoxPostalCode.Size = new System.Drawing.Size(114, 23);
-			this.textBoxPostalCode.TabIndex = 8;
+			this.textBoxPostalCode.TabIndex = 9;
 			this.textBoxPostalCode.Enter += new System.EventHandler(this.textBoxPostalCode_Enter);
 			this.textBoxPostalCode.Leave += new System.EventHandler(this.textBoxPostalCode_Leave);
 			// 
@@ -280,7 +280,7 @@ namespace Cadaster.UI
 			this.textBoxNumber.Location = new System.Drawing.Point(252, 362);
 			this.textBoxNumber.Name = "textBoxNumber";
 			this.textBoxNumber.Size = new System.Drawing.Size(105, 23);
-			this.textBoxNumber.TabIndex = 9;
+			this.textBoxNumber.TabIndex = 10;
 			// 
 			// textBoxComplement
 			// 
@@ -290,7 +290,7 @@ namespace Cadaster.UI
 			this.textBoxComplement.Location = new System.Drawing.Point(365, 361);
 			this.textBoxComplement.Name = "textBoxComplement";
 			this.textBoxComplement.Size = new System.Drawing.Size(250, 23);
-			this.textBoxComplement.TabIndex = 10;
+			this.textBoxComplement.TabIndex = 11;
 			// 
 			// labelSex
 			// 
@@ -307,7 +307,7 @@ namespace Cadaster.UI
 			this.comboBoxSex.Location = new System.Drawing.Point(180, 196);
 			this.comboBoxSex.Name = "comboBoxSex";
 			this.comboBoxSex.Size = new System.Drawing.Size(66, 23);
-			this.comboBoxSex.TabIndex = 4;
+			this.comboBoxSex.TabIndex = 5;
 			// 
 			// buttonSave
 			// 
@@ -315,7 +315,7 @@ namespace Cadaster.UI
 			this.buttonSave.Location = new System.Drawing.Point(459, 408);
 			this.buttonSave.Name = "buttonSave";
 			this.buttonSave.Size = new System.Drawing.Size(75, 23);
-			this.buttonSave.TabIndex = 11;
+			this.buttonSave.TabIndex = 12;
 			this.buttonSave.Text = "&Save";
 			this.buttonSave.UseVisualStyleBackColor = true;
 			this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -326,7 +326,7 @@ namespace Cadaster.UI
 			this.buttonCancel.Location = new System.Drawing.Point(540, 408);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 12;
+			this.buttonCancel.TabIndex = 13;
 			this.buttonCancel.Text = "&Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -346,6 +346,7 @@ namespace Cadaster.UI
 			this.buttonSearchPostalCode.Name = "buttonSearchPostalCode";
 			this.buttonSearchPostalCode.Size = new System.Drawing.Size(57, 23);
 			this.buttonSearchPostalCode.TabIndex = 33;
+			this.buttonSearchPostalCode.TabStop = false;
 			this.buttonSearchPostalCode.Text = "Search";
 			this.buttonSearchPostalCode.UseVisualStyleBackColor = true;
 			this.buttonSearchPostalCode.Click += new System.EventHandler(this.buttonSearchPostalCode_Click);
@@ -367,7 +368,7 @@ namespace Cadaster.UI
 			this.comboBoxDocumentType.Location = new System.Drawing.Point(26, 252);
 			this.comboBoxDocumentType.Name = "comboBoxDocumentType";
 			this.comboBoxDocumentType.Size = new System.Drawing.Size(148, 23);
-			this.comboBoxDocumentType.TabIndex = 6;
+			this.comboBoxDocumentType.TabIndex = 7;
 			// 
 			// textBoxStateRegistration
 			// 
@@ -376,7 +377,7 @@ namespace Cadaster.UI
 			this.textBoxStateRegistration.Location = new System.Drawing.Point(26, 92);
 			this.textBoxStateRegistration.Name = "textBoxStateRegistration";
 			this.textBoxStateRegistration.Size = new System.Drawing.Size(372, 23);
-			this.textBoxStateRegistration.TabIndex = 37;
+			this.textBoxStateRegistration.TabIndex = 2;
 			// 
 			// labelStateRegistration
 			// 
