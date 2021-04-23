@@ -15,6 +15,8 @@ namespace Domain
 		[MinLength(3), MaxLength(60)]
 		public string Name { get; set; }
 
+		public string StateRegistration { get; set; }
+
 		[Required]
 		[MaxLength(60)]
 		public string Email { get; set; }

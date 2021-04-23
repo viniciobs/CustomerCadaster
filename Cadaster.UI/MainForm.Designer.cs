@@ -35,6 +35,7 @@ namespace Cadaster.UI
 			this.listView = new System.Windows.Forms.ListView();
 			this.columnHeaderName = new System.Windows.Forms.ColumnHeader();
 			this.columnHeaderEmail = new System.Windows.Forms.ColumnHeader();
+			this.columnHeaderStateRegistration = new System.Windows.Forms.ColumnHeader();
 			this.columnHeaderDocument = new System.Windows.Forms.ColumnHeader();
 			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.toolStripMenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,6 +77,7 @@ namespace Cadaster.UI
 			this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderName,
             this.columnHeaderEmail,
+            this.columnHeaderStateRegistration,
             this.columnHeaderDocument});
 			this.listView.ContextMenuStrip = this.contextMenuStrip;
 			this.listView.FullRowSelect = true;
@@ -98,7 +100,12 @@ namespace Cadaster.UI
 			// columnHeaderEmail
 			// 
 			this.columnHeaderEmail.Text = "E-mail";
-			this.columnHeaderEmail.Width = 250;
+			this.columnHeaderEmail.Width = 200;
+			// 
+			// columnHeaderStateRegistration
+			// 
+			this.columnHeaderStateRegistration.Text = "State registration";
+			this.columnHeaderStateRegistration.Width = 150;
 			// 
 			// columnHeaderDocument
 			// 
@@ -210,5 +217,6 @@ namespace Cadaster.UI
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemShow;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDelete;
 		private System.Windows.Forms.ColumnHeader columnHeaderEmail;
+		private System.Windows.Forms.ColumnHeader columnHeaderStateRegistration;
 	}
 }

@@ -77,6 +77,7 @@ namespace Cadaster.UI
 		private void Populate()
 		{
 			textBoxName.Text = Customer.Name;
+			textBoxStateRegistration.Text = Customer.StateRegistration;
 			textBoxEmail.Text = Customer.Email;
 			textBoxPhone.Text = Customer.Phone;
 			textBoxDocument.Text = Customer.Document;
@@ -146,8 +147,14 @@ namespace Cadaster.UI
 
 		private void ValidateCustomerExistance(CustomerContext context)
 		{
-			var customerExists = context.Customer.AsNoTracking().AsEnumerable().Any(x => x.Document.OnlyNumbers() == Customer.Document.OnlyNumbers() && x.Id != Customer.Id);
-			if (customerExists) throw new Exception($"There's already a customer in the database with the document {Customer.Document}");
+			var customerExists = context.Customer.AsNoTracking().AsEnumerable().Any(x =>
+										(
+											x.Document.OnlyNumbers() == Customer.Document.OnlyNumbers() ||
+											(!string.IsNullOrEmpty(x.StateRegistration) && x.StateRegistration.OnlyNumbers() == Customer.StateRegistration.OnlyNumbers())
+										)
+										&& x.Id != Customer.Id);
+
+			if (customerExists) throw new Exception($"There's already a customer in the database with the same document or state registration");
 		}
 
 		private void Reset()
@@ -206,6 +213,7 @@ namespace Cadaster.UI
 			if (!Validate()) return;
 
 			Customer.Name = textBoxName.Text;
+			Customer.StateRegistration = textBoxStateRegistration.Text;
 			Customer.Email = textBoxEmail.Text;
 			Customer.BirthDate = dateTimePickerBirthDate.Value.ToInitial();
 			Customer.DocumentType = comboBoxDocumentType.GetSelectedItem<DocumentType>().Value;

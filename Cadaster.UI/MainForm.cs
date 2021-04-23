@@ -105,7 +105,8 @@ namespace Cadaster.UI
 				var item = new ListViewItem();
 				item.Text = customer.Name;
 				item.Tag = customer;
-				item.SubItems.AddRange(new string[] { customer.Email, customer.Document });
+				item.SubItems.AddRange(new string[] { customer.Email, customer.StateRegistration ?? "-", customer.Document });
+
 				items.Add(item);
 			}
 
