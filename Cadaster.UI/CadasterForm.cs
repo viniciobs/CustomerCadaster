@@ -100,8 +100,8 @@ namespace Cadaster.UI
 			textBoxNumber.Text = Customer.Number;
 			textBoxComplement.Text = Customer.Complement;
 
-			textBoxNumber.Enabled = string.IsNullOrEmpty(Customer.City);
-			textBoxComplement.Enabled = string.IsNullOrEmpty(Customer.City);
+			textBoxNumber.Enabled = !string.IsNullOrEmpty(Customer.City);
+			textBoxComplement.Enabled = !string.IsNullOrEmpty(Customer.City);
 		}
 
 		private new bool Validate()
