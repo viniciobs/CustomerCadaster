@@ -105,7 +105,7 @@ namespace Cadaster.UI
 			var form = new CadasterForm();
 			form.Customer = (Customer)selected.Tag;
 
-			form.ShowDialog();
+			form.Show();
 		}
 
 		#endregion Methods

@@ -10,15 +10,17 @@ namespace Cadaster.UI
 {
 	public partial class CadasterForm : Form
 	{
-		#region Fields
-
-		private bool isNew;
-
-		#endregion Fields
-
 		#region Properties
 
 		public Customer Customer { get; set; }
+
+		private bool isNew
+		{
+			get
+			{
+				return Customer.Id == default(int);
+			}
+		}
 
 		#endregion Properties
 
@@ -43,11 +45,9 @@ namespace Cadaster.UI
 		private void buttonCancel_Click(object sender, EventArgs e)
 		{
 			var result = MessageBox.Show("Are you sure you want to cancel?", "Confirm", MessageBoxButtons.YesNo);
+			if (result == DialogResult.No) return;
 
-			if (result == DialogResult.Yes)
-			{
-				Reset();
-			}
+			Close();
 		}
 
 		private void buttonSearchPostalCode_Click(object sender, EventArgs e)
@@ -69,8 +69,6 @@ namespace Cadaster.UI
 		{
 			base.OnLoad(e);
 
-			isNew = Customer.Id == default(int);
-
 			Populate();
 		}
 
@@ -90,6 +88,12 @@ namespace Cadaster.UI
 			{
 				comboBoxSex.SelectItem(Customer.Sex);
 				comboBoxDocumentType.SelectItem(Customer.DocumentType);
+
+				dateTimePickerBirthDate.Value = Customer.BirthDate;
+			}
+			else
+			{
+				dateTimePickerBirthDate.Value = DateTime.UtcNow;
 			}
 
 			textBoxPostalCode.Text = Customer.PostalCode;
