@@ -30,12 +30,18 @@ namespace Cadaster.UI
 			Search(term);
 		}
 
+		private void listView_DoubleClick(object sender, EventArgs e)
+		{
+			ShowCustomer();
+		}
+
 		private void contextMenuStrip_Click(object sender, EventArgs e)
 		{
 		}
 
 		private void buttonShow_Click(object sender, EventArgs e)
 		{
+			ShowCustomer();
 		}
 
 		private void buttonCadaster_Click(object sender, EventArgs e)
@@ -73,19 +79,32 @@ namespace Cadaster.UI
 
 		private void Populate(Customer[] customers)
 		{
+			listView.Items.Clear();
 			if (!customers.Any()) return;
 
 			var items = new List<ListViewItem>();
 
 			foreach (var customer in customers)
 			{
-				items.Add(new ListViewItem(new string[] { customer.Name, customer.Email, customer.Document }));
+				var item = new ListViewItem();
+				item.Text = customer.Name;
+				item.Tag = customer;
+				item.SubItems.AddRange(new string[] { customer.Email, customer.Document });
+				items.Add(item);
 			}
 
-			listView.BeginUpdate();
-			listView.Items.Clear();
 			listView.Items.AddRange(items.ToArray());
-			listView.EndUpdate();
+		}
+
+		private void ShowCustomer()
+		{
+			var selected = listView.SelectedItems.Cast<ListViewItem>().FirstOrDefault();
+			if (selected == null) return;
+
+			var form = new CadasterForm();
+			form.Customer = (Customer)selected.Tag;
+
+			form.ShowDialog();
 		}
 
 		#endregion Methods

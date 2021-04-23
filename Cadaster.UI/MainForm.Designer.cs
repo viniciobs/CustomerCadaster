@@ -30,21 +30,27 @@ namespace Cadaster.UI
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
+			System.Windows.Forms.ColumnHeader columnHeaderEmail;
 			this.buttonSearch = new System.Windows.Forms.Button();
 			this.textBoxSearch = new System.Windows.Forms.TextBox();
 			this.listView = new System.Windows.Forms.ListView();
 			this.columnHeaderName = new System.Windows.Forms.ColumnHeader();
-			this.columnHeaderEmail = new System.Windows.Forms.ColumnHeader();
 			this.columnHeaderDocument = new System.Windows.Forms.ColumnHeader();
-			this.labelEmpty = new System.Windows.Forms.Label();
 			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.toolStripMenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItemShow = new System.Windows.Forms.ToolStripMenuItem();
+			this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
+			this.labelEmpty = new System.Windows.Forms.Label();
 			this.buttonShow = new System.Windows.Forms.Button();
 			this.buttonCadaster = new System.Windows.Forms.Button();
-			this.toolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
-			this.toolStripMenuItemShow = new System.Windows.Forms.ToolStripMenuItem();
+			columnHeaderEmail = new System.Windows.Forms.ColumnHeader();
 			this.contextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
+			// 
+			// columnHeaderEmail
+			// 
+			columnHeaderEmail.Text = "Email";
+			columnHeaderEmail.Width = 100;
 			// 
 			// buttonSearch
 			// 
@@ -72,38 +78,34 @@ namespace Cadaster.UI
 			this.listView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.listView.AutoArrange = false;
 			this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderName,
-            this.columnHeaderEmail,
+            columnHeaderEmail,
             this.columnHeaderDocument});
+			this.listView.ContextMenuStrip = this.contextMenuStrip;
+			this.listView.FullRowSelect = true;
+			this.listView.GridLines = true;
+			this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
 			this.listView.HideSelection = false;
 			this.listView.Location = new System.Drawing.Point(12, 58);
+			this.listView.MultiSelect = false;
 			this.listView.Name = "listView";
+			this.listView.ShowGroups = false;
 			this.listView.Size = new System.Drawing.Size(776, 398);
 			this.listView.TabIndex = 2;
 			this.listView.UseCompatibleStateImageBehavior = false;
+			this.listView.View = System.Windows.Forms.View.List;
+			this.listView.DoubleClick += new System.EventHandler(this.listView_DoubleClick);
 			// 
 			// columnHeaderName
 			// 
+			this.columnHeaderName.Text = "Name";
 			this.columnHeaderName.Width = 120;
 			// 
-			// columnHeaderEmail
+			// columnHeaderDocument
 			// 
-			this.columnHeaderEmail.Width = 100;
-			// 
-			// labelEmpty
-			// 
-			this.labelEmpty.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.labelEmpty.BackColor = System.Drawing.Color.White;
-			this.labelEmpty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.labelEmpty.Location = new System.Drawing.Point(21, 216);
-			this.labelEmpty.Name = "labelEmpty";
-			this.labelEmpty.Size = new System.Drawing.Size(757, 86);
-			this.labelEmpty.TabIndex = 3;
-			this.labelEmpty.Text = "Empty";
-			this.labelEmpty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.columnHeaderDocument.Text = "Document";
 			// 
 			// contextMenuStrip
 			// 
@@ -123,9 +125,35 @@ namespace Cadaster.UI
 			this.toolStripMenuItemNew.Size = new System.Drawing.Size(82, 22);
 			this.toolStripMenuItemNew.Text = "&New";
 			// 
+			// toolStripMenuItemShow
+			// 
+			this.toolStripMenuItemShow.Name = "toolStripMenuItemShow";
+			this.toolStripMenuItemShow.Size = new System.Drawing.Size(82, 22);
+			this.toolStripMenuItemShow.Text = "&Show";
+			// 
+			// toolStripMenuItemDelete
+			// 
+			this.toolStripMenuItemDelete.Name = "toolStripMenuItemDelete";
+			this.toolStripMenuItemDelete.Size = new System.Drawing.Size(82, 22);
+			this.toolStripMenuItemDelete.Text = "&Delete";
+			// 
+			// labelEmpty
+			// 
+			this.labelEmpty.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+			this.labelEmpty.BackColor = System.Drawing.Color.White;
+			this.labelEmpty.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+			this.labelEmpty.Location = new System.Drawing.Point(21, 216);
+			this.labelEmpty.Name = "labelEmpty";
+			this.labelEmpty.Size = new System.Drawing.Size(757, 86);
+			this.labelEmpty.TabIndex = 3;
+			this.labelEmpty.Text = "Empty";
+			this.labelEmpty.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
 			// buttonShow
 			// 
-			this.buttonShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonShow.Location = new System.Drawing.Point(632, 474);
 			this.buttonShow.Name = "buttonShow";
 			this.buttonShow.Size = new System.Drawing.Size(75, 23);
@@ -136,7 +164,7 @@ namespace Cadaster.UI
 			// 
 			// buttonCadaster
 			// 
-			this.buttonCadaster.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonCadaster.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonCadaster.Location = new System.Drawing.Point(713, 474);
 			this.buttonCadaster.Name = "buttonCadaster";
 			this.buttonCadaster.Size = new System.Drawing.Size(75, 23);
@@ -145,25 +173,12 @@ namespace Cadaster.UI
 			this.buttonCadaster.UseVisualStyleBackColor = true;
 			this.buttonCadaster.Click += new System.EventHandler(this.buttonCadaster_Click);
 			// 
-			// toolStripMenuItemDelete
-			// 
-			this.toolStripMenuItemDelete.Name = "toolStripMenuItemDelete";
-			this.toolStripMenuItemDelete.Size = new System.Drawing.Size(82, 22);
-			this.toolStripMenuItemDelete.Text = "&Delete";
-			// 
-			// toolStripMenuItemShow
-			// 
-			this.toolStripMenuItemShow.Name = "toolStripMenuItemShow";
-			this.toolStripMenuItemShow.Size = new System.Drawing.Size(82, 22);
-			this.toolStripMenuItemShow.Text = "&Show";
-			// 
 			// MainForm
 			// 
 			this.AcceptButton = this.buttonSearch;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(800, 509);
-			this.ContextMenuStrip = this.contextMenuStrip;
 			this.Controls.Add(this.buttonCadaster);
 			this.Controls.Add(this.buttonShow);
 			this.Controls.Add(this.labelEmpty);
