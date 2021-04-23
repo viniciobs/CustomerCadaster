@@ -60,7 +60,7 @@ namespace Cadaster.UI
 			this.textBoxState = new System.Windows.Forms.TextBox();
 			this.buttonSearchPostalCode = new System.Windows.Forms.Button();
 			this.labelDocumentType = new System.Windows.Forms.Label();
-			this.comboBoxDocumentType = new System.Windows.Forms.ComboBox();			
+			this.comboBoxDocumentType = new System.Windows.Forms.ComboBox();
 			this.textBoxStateRegistration = new System.Windows.Forms.TextBox();
 			this.labelStateRegistration = new System.Windows.Forms.Label();
 			this.SuspendLayout();
@@ -367,7 +367,7 @@ namespace Cadaster.UI
 			this.comboBoxDocumentType.Location = new System.Drawing.Point(26, 252);
 			this.comboBoxDocumentType.Name = "comboBoxDocumentType";
 			this.comboBoxDocumentType.Size = new System.Drawing.Size(148, 23);
-			this.comboBoxDocumentType.TabIndex = 6;			
+			this.comboBoxDocumentType.TabIndex = 6;
 			// 
 			// textBoxStateRegistration
 			// 
@@ -394,7 +394,6 @@ namespace Cadaster.UI
 			this.AcceptButton = this.buttonSave;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.CancelButton = this.buttonCancel;
 			this.ClientSize = new System.Drawing.Size(643, 447);
 			this.Controls.Add(this.textBoxStateRegistration);
 			this.Controls.Add(this.labelStateRegistration);
