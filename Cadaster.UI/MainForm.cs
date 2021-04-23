@@ -64,6 +64,11 @@ namespace Cadaster.UI
 			New();
 		}
 
+		private void toolStripMenuItemDelete_Click(object sender, EventArgs e)
+		{
+			Delete();
+		}
+
 		#endregion Event Handlers
 
 		private void Search(string term)
@@ -129,6 +134,26 @@ namespace Cadaster.UI
 
 		private void Delete()
 		{
+			var selected = listView.SelectedItems.Cast<ListViewItem>().FirstOrDefault();
+			if (selected == null) return;
+
+			var customer = (Customer)selected.Tag;
+
+			var result = MessageBox.Show($"Are you sure you want to delete {customer.Name}?", "Confirm", MessageBoxButtons.YesNo);
+			if (result == DialogResult.No) return;
+
+			var form = new ProgressForm(() =>
+			{
+				using (var context = new CustomerContext())
+				{
+					context.Customer.Remove(customer);
+					context.SaveChanges();
+				}
+			});
+
+			form.Show(this);
+
+			listView.Items.Remove(selected);
 		}
 
 		#endregion Methods

@@ -138,6 +138,7 @@ namespace Cadaster.UI
 			this.toolStripMenuItemDelete.Name = "toolStripMenuItemDelete";
 			this.toolStripMenuItemDelete.Size = new System.Drawing.Size(82, 22);
 			this.toolStripMenuItemDelete.Text = "&Delete";
+			this.toolStripMenuItemDelete.Click += new System.EventHandler(this.toolStripMenuItemDelete_Click);
 			// 
 			// labelEmpty
 			// 

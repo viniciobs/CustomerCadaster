@@ -219,6 +219,8 @@ namespace Cadaster.UI
 			Customer.Number = textBoxNumber.Text;
 			Customer.Complement = textBoxComplement.Text;
 
+			var isNewCadaster = isNew;
+
 			var form = new ProgressForm(() =>
 			{
 				using (var context = new CustomerContext())
@@ -234,7 +236,7 @@ namespace Cadaster.UI
 
 			if (result == DialogResult.OK)
 			{
-				var action = isNew ? "cadastered" : "updated";
+				var action = isNewCadaster ? "cadastered" : "updated";
 
 				MessageBox.Show($"Customer \"{Customer.Name}\" {action} successfully", "Success", MessageBoxButtons.OK);
 				Reset();
