@@ -1,5 +1,6 @@
 ﻿using Cadaster.UI.Helpers;
 using Domain;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,7 +64,7 @@ namespace Cadaster.UI
 			{
 				using (var context = new CustomerContext())
 				{
-					customers = context.Customer.AsEnumerable().Where(x => x.Document.OnlyNumbers() == term.OnlyNumbers() || x.Name.ToUpper().Contains(term.ToUpper())).ToArray();
+					customers = context.Customer.AsNoTracking().AsEnumerable().Where(x => x.Document.OnlyNumbers() == term.OnlyNumbers() || x.Name.ToUpper().Contains(term.ToUpper())).ToArray();
 				}
 			});
 

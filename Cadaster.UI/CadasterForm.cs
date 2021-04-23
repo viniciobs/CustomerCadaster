@@ -4,13 +4,18 @@ using System.Windows.Forms;
 using Domain;
 using Cadaster.UI.Helpers;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using System.Linq;
 
 namespace Cadaster.UI
 {
 	public partial class CadasterForm : Form
 	{
+		#region Fields
+
+		private bool isNew;
+
+		#endregion Fields
+
 		#region Properties
 
 		public Customer Customer { get; set; }
@@ -64,6 +69,8 @@ namespace Cadaster.UI
 		{
 			base.OnLoad(e);
 
+			isNew = Customer.Id == default(int);
+
 			Populate();
 		}
 
@@ -71,8 +78,6 @@ namespace Cadaster.UI
 
 		private void Populate()
 		{
-			var isNew = Customer.Id == default(int);
-
 			textBoxName.Text = Customer.Name;
 			textBoxEmail.Text = Customer.Email;
 			textBoxPhone.Text = Customer.Phone;
@@ -134,6 +139,12 @@ namespace Cadaster.UI
 			return validation.IsValid;
 		}
 
+		private void ValidateCustomerExistance(CustomerContext context)
+		{
+			var customerExists = context.Customer.AsNoTracking().AsEnumerable().Any(x => x.Document.OnlyNumbers() == Customer.Document.OnlyNumbers() && x.Id != Customer.Id);
+			if (customerExists) throw new Exception($"There's already a customer in the database with the document {Customer.Document}");
+		}
+
 		private void Reset()
 		{
 			Customer = new Customer();
@@ -189,32 +200,28 @@ namespace Cadaster.UI
 		{
 			if (!Validate()) return;
 
-			var customer = new Customer()
-			{
-				Name = textBoxName.Text,
-				Email = textBoxEmail.Text,
-				BirthDate = dateTimePickerBirthDate.Value,
-				DocumentType = comboBoxDocumentType.GetSelectedItem<DocumentType>().Value,
-				Document = textBoxDocument.Text,
-				Phone = textBoxPhone.Text,
-				Sex = comboBoxSex.GetSelectedItem<Sex>().Value,
-				PostalCode = textBoxPostalCode.Text,
-				State = textBoxState.Text,
-				City = textBoxCity.Text,
-				Burgh = textBoxBurgh.Text,
-				Street = textBoxStreet.Text,
-				Number = textBoxNumber.Text,
-				Complement = textBoxComplement.Text
-			};
+			Customer.Name = textBoxName.Text;
+			Customer.Email = textBoxEmail.Text;
+			Customer.BirthDate = dateTimePickerBirthDate.Value;
+			Customer.DocumentType = comboBoxDocumentType.GetSelectedItem<DocumentType>().Value;
+			Customer.Document = textBoxDocument.Text;
+			Customer.Phone = textBoxPhone.Text;
+			Customer.Sex = comboBoxSex.GetSelectedItem<Sex>().Value;
+			Customer.PostalCode = textBoxPostalCode.Text;
+			Customer.State = textBoxState.Text;
+			Customer.City = textBoxCity.Text;
+			Customer.Burgh = textBoxBurgh.Text;
+			Customer.Street = textBoxStreet.Text;
+			Customer.Number = textBoxNumber.Text;
+			Customer.Complement = textBoxComplement.Text;
 
 			var form = new ProgressForm(() =>
 			{
 				using (var context = new CustomerContext())
 				{
-					var customerExists = context.Customer.AsEnumerable().Any(x => x.Document.OnlyNumbers() == customer.Document.OnlyNumbers());
-					if (customerExists) throw new Exception($"There's already a customer in the database with the document {customer.Document}");
+					ValidateCustomerExistance(context);
 
-					context.Entry(customer).State = EntityState.Added;
+					context.Entry(Customer).State = isNew ? EntityState.Added : EntityState.Modified;
 					context.SaveChanges();
 				}
 			});
@@ -223,7 +230,9 @@ namespace Cadaster.UI
 
 			if (result == DialogResult.OK)
 			{
-				MessageBox.Show($"Customer \"{customer.Name}\" cadastered successfully", "Success", MessageBoxButtons.OK);
+				var action = isNew ? "cadastered" : "updated";
+
+				MessageBox.Show($"Customer \"{Customer.Name}\" {action} successfully", "Success", MessageBoxButtons.OK);
 				Reset();
 			}
 		}
