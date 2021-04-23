@@ -37,6 +37,14 @@ namespace Cadaster.UI
 
 		#region Event Handlers
 
+		private void buttonCamera_Click(object sender, EventArgs e)
+		{
+		}
+
+		private void buttonLoadImage_Click(object sender, EventArgs e)
+		{
+		}
+
 		private void buttonSave_Click(object sender, EventArgs e)
 		{
 			Finish();

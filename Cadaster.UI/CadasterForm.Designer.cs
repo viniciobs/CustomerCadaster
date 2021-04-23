@@ -40,6 +40,8 @@ namespace Cadaster.UI
 			this.dateTimePickerBirthDate = new System.Windows.Forms.DateTimePicker();
 			this.labelBirthDate = new System.Windows.Forms.Label();
 			this.panelPhoto = new System.Windows.Forms.Panel();
+			this.buttonCamera = new System.Windows.Forms.Button();
+			this.buttonLoadImage = new System.Windows.Forms.Button();
 			this.pictureBox = new System.Windows.Forms.PictureBox();
 			this.textBoxPostalCode = new System.Windows.Forms.TextBox();
 			this.labelPostalCode = new System.Windows.Forms.Label();
@@ -162,11 +164,47 @@ namespace Cadaster.UI
 			// panelPhoto
 			// 
 			this.panelPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.panelPhoto.Controls.Add(this.buttonCamera);
+			this.panelPhoto.Controls.Add(this.buttonLoadImage);
 			this.panelPhoto.Controls.Add(this.pictureBox);
 			this.panelPhoto.Location = new System.Drawing.Point(415, 22);
 			this.panelPhoto.Name = "panelPhoto";
 			this.panelPhoto.Size = new System.Drawing.Size(200, 253);
 			this.panelPhoto.TabIndex = 11;
+			// 
+			// buttonCamera
+			// 
+			this.buttonCamera.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonCamera.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.buttonCamera.BackgroundImage = global::Cadaster.UI.Properties.Resources.Camera;
+			this.buttonCamera.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.buttonCamera.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.buttonCamera.FlatAppearance.BorderSize = 0;
+			this.buttonCamera.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonCamera.Location = new System.Drawing.Point(109, 229);
+			this.buttonCamera.Margin = new System.Windows.Forms.Padding(0);
+			this.buttonCamera.Name = "buttonCamera";
+			this.buttonCamera.Size = new System.Drawing.Size(22, 22);
+			this.buttonCamera.TabIndex = 13;
+			this.buttonCamera.UseVisualStyleBackColor = true;
+			this.buttonCamera.Click += new System.EventHandler(this.buttonCamera_Click);
+			// 
+			// buttonLoadImage
+			// 
+			this.buttonLoadImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonLoadImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.buttonLoadImage.BackgroundImage = global::Cadaster.UI.Properties.Resources.Folder;
+			this.buttonLoadImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.buttonLoadImage.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.buttonLoadImage.FlatAppearance.BorderSize = 0;
+			this.buttonLoadImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonLoadImage.Location = new System.Drawing.Point(84, 228);
+			this.buttonLoadImage.Margin = new System.Windows.Forms.Padding(0);
+			this.buttonLoadImage.Name = "buttonLoadImage";
+			this.buttonLoadImage.Size = new System.Drawing.Size(25, 24);
+			this.buttonLoadImage.TabIndex = 12;
+			this.buttonLoadImage.UseVisualStyleBackColor = true;
+			this.buttonLoadImage.Click += new System.EventHandler(this.buttonLoadImage_Click);
 			// 
 			// pictureBox
 			// 
@@ -340,7 +378,7 @@ namespace Cadaster.UI
 			this.buttonCancel.Location = new System.Drawing.Point(540, 408);
 			this.buttonCancel.Name = "buttonCancel";
 			this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-			this.buttonCancel.TabIndex = 13;
+			this.buttonCancel.TabIndex = 14;
 			this.buttonCancel.Text = "&Cancel";
 			this.buttonCancel.UseVisualStyleBackColor = true;
 			this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -492,6 +530,8 @@ namespace Cadaster.UI
 		private System.Windows.Forms.TextBox textBoxStateRegistration;
 		private System.Windows.Forms.Label labelStateRegistration;
 		private System.Windows.Forms.PictureBox pictureBox;
+		private System.Windows.Forms.Button buttonLoadImage;
+		private System.Windows.Forms.Button buttonCamera;
 	}
 }
 
