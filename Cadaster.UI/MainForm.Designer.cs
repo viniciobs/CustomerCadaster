@@ -117,7 +117,7 @@ namespace Cadaster.UI
 			this.contextMenuStrip.ShowImageMargin = false;
 			this.contextMenuStrip.Size = new System.Drawing.Size(83, 70);
 			this.contextMenuStrip.Text = "&New cadaster";
-			this.contextMenuStrip.Click += new System.EventHandler(this.contextMenuStrip_Click);
+			this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
 			// 
 			// toolStripMenuItemNew
 			// 

@@ -36,13 +36,17 @@ namespace Cadaster.UI
 			ShowCustomer();
 		}
 
-		private void contextMenuStrip_Click(object sender, EventArgs e)
-		{
-		}
-
 		private void buttonShow_Click(object sender, EventArgs e)
 		{
 			ShowCustomer();
+		}
+
+		private void contextMenuStrip_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			var hasCustomerSelected = listView.SelectedItems.Count > 0;
+
+			toolStripMenuItemDelete.Enabled = hasCustomerSelected;
+			toolStripMenuItemShow.Enabled = hasCustomerSelected;
 		}
 
 		private void buttonCadaster_Click(object sender, EventArgs e)
