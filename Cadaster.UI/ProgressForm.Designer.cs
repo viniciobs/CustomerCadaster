@@ -51,11 +51,11 @@ namespace Cadaster.UI
             | System.Windows.Forms.AnchorStyles.Right)));
 			this.label.AutoSize = true;
 			this.label.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-			this.label.Location = new System.Drawing.Point(110, 9);
+			this.label.Location = new System.Drawing.Point(84, 9);
 			this.label.Name = "label";
-			this.label.Size = new System.Drawing.Size(51, 18);
+			this.label.Size = new System.Drawing.Size(101, 18);
 			this.label.TabIndex = 1;
-			this.label.Text = "Wait...";
+			this.label.Text = "Please wait...";
 			// 
 			// ProgressForm
 			// 
