@@ -76,6 +76,7 @@ namespace Cadaster.UI
 
 		private void Populate()
 		{
+			pictureBox.Image = Customer.Photo != null ? Customer.Photo.ToImage() : ImageHelper.DefaultImage();
 			textBoxName.Text = Customer.Name;
 			textBoxStateRegistration.Text = Customer.StateRegistration;
 			textBoxEmail.Text = Customer.Email;

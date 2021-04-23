@@ -40,6 +40,7 @@ namespace Cadaster.UI
 			this.dateTimePickerBirthDate = new System.Windows.Forms.DateTimePicker();
 			this.labelBirthDate = new System.Windows.Forms.Label();
 			this.panelPhoto = new System.Windows.Forms.Panel();
+			this.pictureBox = new System.Windows.Forms.PictureBox();
 			this.textBoxPostalCode = new System.Windows.Forms.TextBox();
 			this.labelPostalCode = new System.Windows.Forms.Label();
 			this.textBoxStreet = new System.Windows.Forms.TextBox();
@@ -63,6 +64,8 @@ namespace Cadaster.UI
 			this.comboBoxDocumentType = new System.Windows.Forms.ComboBox();
 			this.textBoxStateRegistration = new System.Windows.Forms.TextBox();
 			this.labelStateRegistration = new System.Windows.Forms.Label();
+			this.panelPhoto.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// labelName
@@ -159,10 +162,21 @@ namespace Cadaster.UI
 			// panelPhoto
 			// 
 			this.panelPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.panelPhoto.Controls.Add(this.pictureBox);
 			this.panelPhoto.Location = new System.Drawing.Point(415, 22);
 			this.panelPhoto.Name = "panelPhoto";
 			this.panelPhoto.Size = new System.Drawing.Size(200, 253);
 			this.panelPhoto.TabIndex = 11;
+			// 
+			// pictureBox
+			// 
+			this.pictureBox.Dock = System.Windows.Forms.DockStyle.Top;
+			this.pictureBox.Location = new System.Drawing.Point(0, 0);
+			this.pictureBox.Name = "pictureBox";
+			this.pictureBox.Size = new System.Drawing.Size(200, 227);
+			this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+			this.pictureBox.TabIndex = 0;
+			this.pictureBox.TabStop = false;
 			// 
 			// textBoxPostalCode
 			// 
@@ -434,6 +448,8 @@ namespace Cadaster.UI
 			this.Name = "CadasterForm";
 			this.ShowIcon = false;
 			this.Text = "Customer";
+			this.panelPhoto.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -475,6 +491,7 @@ namespace Cadaster.UI
 		private System.Windows.Forms.ComboBox comboBoxDocumentType;		
 		private System.Windows.Forms.TextBox textBoxStateRegistration;
 		private System.Windows.Forms.Label labelStateRegistration;
+		private System.Windows.Forms.PictureBox pictureBox;
 	}
 }
 
