@@ -30,7 +30,6 @@ namespace Cadaster.UI
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.Windows.Forms.ColumnHeader columnHeaderEmail;
 			this.buttonSearch = new System.Windows.Forms.Button();
 			this.textBoxSearch = new System.Windows.Forms.TextBox();
 			this.listView = new System.Windows.Forms.ListView();
@@ -43,14 +42,9 @@ namespace Cadaster.UI
 			this.labelEmpty = new System.Windows.Forms.Label();
 			this.buttonShow = new System.Windows.Forms.Button();
 			this.buttonCadaster = new System.Windows.Forms.Button();
-			columnHeaderEmail = new System.Windows.Forms.ColumnHeader();
+			this.columnHeaderEmail = new System.Windows.Forms.ColumnHeader();
 			this.contextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
-			// 
-			// columnHeaderEmail
-			// 
-			columnHeaderEmail.Text = "Email";
-			columnHeaderEmail.Width = 100;
 			// 
 			// buttonSearch
 			// 
@@ -81,31 +75,30 @@ namespace Cadaster.UI
 			this.listView.AutoArrange = false;
 			this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderName,
-            columnHeaderEmail,
+            this.columnHeaderEmail,
             this.columnHeaderDocument});
 			this.listView.ContextMenuStrip = this.contextMenuStrip;
 			this.listView.FullRowSelect = true;
-			this.listView.GridLines = true;
-			this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+			this.listView.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
 			this.listView.HideSelection = false;
 			this.listView.Location = new System.Drawing.Point(12, 58);
 			this.listView.MultiSelect = false;
 			this.listView.Name = "listView";
-			this.listView.ShowGroups = false;
 			this.listView.Size = new System.Drawing.Size(776, 398);
 			this.listView.TabIndex = 2;
 			this.listView.UseCompatibleStateImageBehavior = false;
-			this.listView.View = System.Windows.Forms.View.List;
+			this.listView.View = System.Windows.Forms.View.Details;
 			this.listView.DoubleClick += new System.EventHandler(this.listView_DoubleClick);
 			// 
 			// columnHeaderName
 			// 
 			this.columnHeaderName.Text = "Name";
-			this.columnHeaderName.Width = 120;
+			this.columnHeaderName.Width = 250;
 			// 
 			// columnHeaderDocument
 			// 
 			this.columnHeaderDocument.Text = "Document";
+			this.columnHeaderDocument.Width = 120;
 			// 
 			// contextMenuStrip
 			// 
@@ -176,6 +169,11 @@ namespace Cadaster.UI
 			this.buttonCadaster.UseVisualStyleBackColor = true;
 			this.buttonCadaster.Click += new System.EventHandler(this.buttonCadaster_Click);
 			// 
+			// columnHeaderEmail
+			// 
+			this.columnHeaderEmail.Text = "E-mail";
+			this.columnHeaderEmail.Width = 250;
+			// 
 			// MainForm
 			// 
 			this.AcceptButton = this.buttonSearch;
@@ -204,14 +202,13 @@ namespace Cadaster.UI
 		private System.Windows.Forms.ListView listView;
 		private System.Windows.Forms.Label labelEmpty;
 		private System.Windows.Forms.ColumnHeader columnHeaderName;
-		private System.Windows.Forms.ColumnHeader columnHeaderEmail;
 		private System.Windows.Forms.ColumnHeader columnHeaderDocument;
 		private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemNew;
 		private System.Windows.Forms.Button buttonShow;
-		private System.Windows.Forms.Button buttonNew;
 		private System.Windows.Forms.Button buttonCadaster;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemShow;
 		private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemDelete;
+		private System.Windows.Forms.ColumnHeader columnHeaderEmail;
 	}
 }
