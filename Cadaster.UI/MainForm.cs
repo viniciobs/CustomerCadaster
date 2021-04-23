@@ -120,7 +120,7 @@ namespace Cadaster.UI
 			var form = new CadasterForm();
 			form.Customer = (Customer)selected.Tag;
 
-			form.Show();
+			form.ShowDialog();
 		}
 
 		private void New()

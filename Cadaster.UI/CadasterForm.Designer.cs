@@ -137,8 +137,6 @@ namespace Cadaster.UI
 			// 
 			// dateTimePickerBirthDate
 			// 
-			this.dateTimePickerBirthDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.dateTimePickerBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
 			this.dateTimePickerBirthDate.Location = new System.Drawing.Point(252, 146);
 			this.dateTimePickerBirthDate.Name = "dateTimePickerBirthDate";
@@ -303,8 +301,6 @@ namespace Cadaster.UI
 			// 
 			// comboBoxSex
 			// 
-			this.comboBoxSex.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.comboBoxSex.FormattingEnabled = true;
 			this.comboBoxSex.Location = new System.Drawing.Point(180, 145);
 			this.comboBoxSex.Name = "comboBoxSex";
@@ -365,8 +361,6 @@ namespace Cadaster.UI
 			// 
 			// comboBoxDocumentType
 			// 
-			this.comboBoxDocumentType.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
 			this.comboBoxDocumentType.FormattingEnabled = true;
 			this.comboBoxDocumentType.Location = new System.Drawing.Point(26, 201);
 			this.comboBoxDocumentType.Name = "comboBoxDocumentType";

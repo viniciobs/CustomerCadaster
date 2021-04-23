@@ -34,6 +34,7 @@ namespace Cadaster.UI
 			this.textBoxSearch = new System.Windows.Forms.TextBox();
 			this.listView = new System.Windows.Forms.ListView();
 			this.columnHeaderName = new System.Windows.Forms.ColumnHeader();
+			this.columnHeaderEmail = new System.Windows.Forms.ColumnHeader();
 			this.columnHeaderDocument = new System.Windows.Forms.ColumnHeader();
 			this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.toolStripMenuItemNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,7 +43,6 @@ namespace Cadaster.UI
 			this.labelEmpty = new System.Windows.Forms.Label();
 			this.buttonShow = new System.Windows.Forms.Button();
 			this.buttonCadaster = new System.Windows.Forms.Button();
-			this.columnHeaderEmail = new System.Windows.Forms.ColumnHeader();
 			this.contextMenuStrip.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -94,6 +94,11 @@ namespace Cadaster.UI
 			// 
 			this.columnHeaderName.Text = "Name";
 			this.columnHeaderName.Width = 250;
+			// 
+			// columnHeaderEmail
+			// 
+			this.columnHeaderEmail.Text = "E-mail";
+			this.columnHeaderEmail.Width = 250;
 			// 
 			// columnHeaderDocument
 			// 
@@ -168,11 +173,6 @@ namespace Cadaster.UI
 			this.buttonCadaster.Text = "&New";
 			this.buttonCadaster.UseVisualStyleBackColor = true;
 			this.buttonCadaster.Click += new System.EventHandler(this.buttonCadaster_Click);
-			// 
-			// columnHeaderEmail
-			// 
-			this.columnHeaderEmail.Text = "E-mail";
-			this.columnHeaderEmail.Width = 250;
 			// 
 			// MainForm
 			// 
