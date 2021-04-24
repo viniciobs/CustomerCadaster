@@ -40,6 +40,7 @@ namespace Cadaster.UI
 			this.dateTimePickerBirthDate = new System.Windows.Forms.DateTimePicker();
 			this.labelBirthDate = new System.Windows.Forms.Label();
 			this.panelPhoto = new System.Windows.Forms.Panel();
+			this.buttonEraser = new System.Windows.Forms.Button();
 			this.buttonCamera = new System.Windows.Forms.Button();
 			this.buttonLoadImage = new System.Windows.Forms.Button();
 			this.pictureBox = new System.Windows.Forms.PictureBox();
@@ -165,6 +166,7 @@ namespace Cadaster.UI
 			// panelPhoto
 			// 
 			this.panelPhoto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.panelPhoto.Controls.Add(this.buttonEraser);
 			this.panelPhoto.Controls.Add(this.buttonCamera);
 			this.panelPhoto.Controls.Add(this.buttonLoadImage);
 			this.panelPhoto.Controls.Add(this.pictureBox);
@@ -172,6 +174,23 @@ namespace Cadaster.UI
 			this.panelPhoto.Name = "panelPhoto";
 			this.panelPhoto.Size = new System.Drawing.Size(200, 253);
 			this.panelPhoto.TabIndex = 11;
+			// 
+			// buttonEraser
+			// 
+			this.buttonEraser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.buttonEraser.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.buttonEraser.BackgroundImage = global::Cadaster.UI.Properties.Resources.Eraser;
+			this.buttonEraser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+			this.buttonEraser.Cursor = System.Windows.Forms.Cursors.Hand;
+			this.buttonEraser.FlatAppearance.BorderSize = 0;
+			this.buttonEraser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.buttonEraser.Location = new System.Drawing.Point(123, 230);
+			this.buttonEraser.Margin = new System.Windows.Forms.Padding(0);
+			this.buttonEraser.Name = "buttonEraser";
+			this.buttonEraser.Size = new System.Drawing.Size(29, 19);
+			this.buttonEraser.TabIndex = 14;
+			this.buttonEraser.UseVisualStyleBackColor = true;
+			this.buttonEraser.Click += new System.EventHandler(this.buttonEraser_Click);
 			// 
 			// buttonCamera
 			// 
@@ -182,7 +201,7 @@ namespace Cadaster.UI
 			this.buttonCamera.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonCamera.FlatAppearance.BorderSize = 0;
 			this.buttonCamera.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonCamera.Location = new System.Drawing.Point(109, 229);
+			this.buttonCamera.Location = new System.Drawing.Point(97, 229);
 			this.buttonCamera.Margin = new System.Windows.Forms.Padding(0);
 			this.buttonCamera.Name = "buttonCamera";
 			this.buttonCamera.Size = new System.Drawing.Size(22, 22);
@@ -200,7 +219,7 @@ namespace Cadaster.UI
 			this.buttonLoadImage.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonLoadImage.FlatAppearance.BorderSize = 0;
 			this.buttonLoadImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonLoadImage.Location = new System.Drawing.Point(80, 232);
+			this.buttonLoadImage.Location = new System.Drawing.Point(70, 232);
 			this.buttonLoadImage.Margin = new System.Windows.Forms.Padding(0);
 			this.buttonLoadImage.Name = "buttonLoadImage";
 			this.buttonLoadImage.Size = new System.Drawing.Size(20, 17);
@@ -539,6 +558,7 @@ namespace Cadaster.UI
 		private System.Windows.Forms.Button buttonLoadImage;
 		private System.Windows.Forms.Button buttonCamera;
 		private System.Windows.Forms.OpenFileDialog openFileDialog;
+		private System.Windows.Forms.Button buttonEraser;
 	}
 }
 

@@ -47,6 +47,11 @@ namespace Cadaster.UI
 			LoadImage();
 		}
 
+		private void buttonEraser_Click(object sender, EventArgs e)
+		{
+			RemoveImage();
+		}
+
 		private void buttonSave_Click(object sender, EventArgs e)
 		{
 			Finish();
@@ -142,6 +147,12 @@ namespace Cadaster.UI
 
 				pictureBox.Image = Customer.Photo.ToImage();
 			}
+		}
+
+		private void RemoveImage()
+		{
+			Customer.Photo = null;
+			pictureBox.Image = ImageHelper.DefaultImage();
 		}
 
 		private new bool Validate()
