@@ -6,6 +6,7 @@ using Cadaster.UI.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.IO;
+using Cadaster.UI.Properties;
 
 namespace Cadaster.UI
 {
@@ -103,6 +104,8 @@ namespace Cadaster.UI
 
 		private void Populate()
 		{
+			toolTip.SetToolTip(buttonCamera, Resources.EnableDeviceCamera);
+
 			pictureBox.Image = Customer.Photo != null ? Customer.Photo.ToImage() : ImageHelper.DefaultImage();
 			textBoxName.Text = Customer.Name;
 			textBoxStateRegistration.Text = Customer.StateRegistration;
@@ -139,7 +142,7 @@ namespace Cadaster.UI
 
 		private void TakePicture()
 		{
-			camCapture = new CamCaptureController(pictureBox);
+			camCapture = new CamCaptureController(pictureBox, buttonCamera, toolTip);
 			camCapture.Start();
 		}
 

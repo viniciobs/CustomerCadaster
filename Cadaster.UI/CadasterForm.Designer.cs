@@ -29,6 +29,7 @@ namespace Cadaster.UI
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.labelName = new System.Windows.Forms.Label();
 			this.textBoxName = new System.Windows.Forms.TextBox();
 			this.textBoxEmail = new System.Windows.Forms.TextBox();
@@ -68,6 +69,7 @@ namespace Cadaster.UI
 			this.textBoxStateRegistration = new System.Windows.Forms.TextBox();
 			this.labelStateRegistration = new System.Windows.Forms.Label();
 			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
+			this.toolTip = new System.Windows.Forms.ToolTip(this.components);
 			this.panelPhoto.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			this.SuspendLayout();
@@ -560,6 +562,7 @@ namespace Cadaster.UI
 		private System.Windows.Forms.Button buttonCamera;
 		private System.Windows.Forms.OpenFileDialog openFileDialog;
 		private System.Windows.Forms.Button buttonEraser;
+		private System.Windows.Forms.ToolTip toolTip;
 	}
 }
 

@@ -73,10 +73,38 @@ namespace Cadaster.UI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Capture {
+            get {
+                object obj = ResourceManager.GetObject("Capture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click to capture image.
+        /// </summary>
+        public static string CaptureImage {
+            get {
+                return ResourceManager.GetString("CaptureImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Default {
             get {
                 object obj = ResourceManager.GetObject("Default", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Click to enable device&apos;s main camera.
+        /// </summary>
+        public static string EnableDeviceCamera {
+            get {
+                return ResourceManager.GetString("EnableDeviceCamera", resourceCulture);
             }
         }
         

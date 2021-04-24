@@ -4,6 +4,7 @@ using Emgu.CV.Structure;
 using System;
 using Cadaster.UI.Helpers;
 using System.Windows.Forms;
+using Cadaster.UI.Properties;
 
 namespace Cadaster.UI
 {
@@ -13,14 +14,22 @@ namespace Cadaster.UI
 
 		private VideoCapture capture;
 		private PictureBox pictureBox;
+		private Button button;
+		private ToolTip toolTip;
 
 		#endregion Fields
 
 		#region Constructor
 
-		public CamCaptureController(PictureBox pictureBox)
+		public CamCaptureController(PictureBox pictureBox, Button button, ToolTip toolTip)
 		{
+			if (pictureBox == null) throw new ArgumentNullException(nameof(pictureBox));
+			if (button == null) throw new ArgumentNullException(nameof(button));
+			if (toolTip == null) throw new ArgumentNullException(nameof(toolTip));
+
 			this.pictureBox = pictureBox;
+			this.button = button;
+			this.toolTip = toolTip;
 
 			capture = new VideoCapture(0, VideoCapture.API.DShow);
 			capture.ImageGrabbed += ImageGrabbed;
@@ -51,12 +60,28 @@ namespace Cadaster.UI
 		public void Start()
 		{
 			capture.Start();
+
+			DisplayCaptureImageOptiion();
 		}
 
 		public void Stop()
 		{
 			capture.Stop();
 			capture.Dispose();
+
+			DisplayEnableCameraOption();
+		}
+
+		private void DisplayEnableCameraOption()
+		{
+			toolTip.SetToolTip(button, Resources.EnableDeviceCamera);
+			button.BackgroundImage = Resources.Camera;
+		}
+
+		private void DisplayCaptureImageOptiion()
+		{
+			toolTip.SetToolTip(button, Resources.CaptureImage);
+			button.BackgroundImage = Resources.Capture;
 		}
 
 		#endregion Methods
