@@ -469,6 +469,10 @@ namespace Cadaster.UI
 			// 
 			this.openFileDialog.FileName = "openFileDialog";
 			// 
+			// toolTip
+			// 
+			this.toolTip.AutomaticDelay = 200;
+			// 
 			// CadasterForm
 			// 
 			this.AcceptButton = this.buttonSave;

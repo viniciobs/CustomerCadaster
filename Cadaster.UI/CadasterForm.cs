@@ -142,7 +142,7 @@ namespace Cadaster.UI
 
 		private void TakePicture()
 		{
-			camCapture = new CamCaptureController(pictureBox, buttonCamera, toolTip);
+			camCapture = new CamCaptureController(pictureBox, buttonCamera, toolTip, buttonCamera_Click);
 			camCapture.Start();
 		}
 
