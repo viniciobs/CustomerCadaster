@@ -66,6 +66,7 @@ namespace Cadaster.UI
 			this.comboBoxDocumentType = new System.Windows.Forms.ComboBox();
 			this.textBoxStateRegistration = new System.Windows.Forms.TextBox();
 			this.labelStateRegistration = new System.Windows.Forms.Label();
+			this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
 			this.panelPhoto.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
 			this.SuspendLayout();
@@ -443,6 +444,10 @@ namespace Cadaster.UI
 			this.labelStateRegistration.TabIndex = 36;
 			this.labelStateRegistration.Text = "State registration :";
 			// 
+			// openFileDialog
+			// 
+			this.openFileDialog.FileName = "openFileDialog";
+			// 
 			// CadasterForm
 			// 
 			this.AcceptButton = this.buttonSave;
@@ -533,6 +538,7 @@ namespace Cadaster.UI
 		private System.Windows.Forms.PictureBox pictureBox;
 		private System.Windows.Forms.Button buttonLoadImage;
 		private System.Windows.Forms.Button buttonCamera;
+		private System.Windows.Forms.OpenFileDialog openFileDialog;
 	}
 }
 

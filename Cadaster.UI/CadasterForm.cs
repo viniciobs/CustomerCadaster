@@ -5,6 +5,7 @@ using Domain;
 using Cadaster.UI.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.IO;
 
 namespace Cadaster.UI
 {
@@ -43,6 +44,7 @@ namespace Cadaster.UI
 
 		private void buttonLoadImage_Click(object sender, EventArgs e)
 		{
+			LoadImage();
 		}
 
 		private void buttonSave_Click(object sender, EventArgs e)
@@ -118,6 +120,30 @@ namespace Cadaster.UI
 			textBoxComplement.Enabled = !string.IsNullOrEmpty(Customer.City);
 		}
 
+		private void LoadImage()
+		{
+			using (var openFileDialog = new OpenFileDialog())
+			{
+				openFileDialog.InitialDirectory = "c:\\Dowloads";
+				openFileDialog.Filter = "Image files|*.jpg;*.jpeg;*.png;*.gif";
+				openFileDialog.FilterIndex = 2;
+				openFileDialog.RestoreDirectory = true;
+
+				if (openFileDialog.ShowDialog() != DialogResult.OK) return;
+
+				var filePath = openFileDialog.FileName;
+				var fileStream = openFileDialog.OpenFile();
+
+				using (var streamReader = new MemoryStream())
+				{
+					fileStream.CopyTo(streamReader);
+					Customer.Photo = streamReader.ToArray();
+				}
+
+				pictureBox.Image = Customer.Photo.ToImage();
+			}
+		}
+
 		private new bool Validate()
 		{
 			var validation = new Validation();
@@ -156,13 +182,7 @@ namespace Cadaster.UI
 
 		private void ValidateCustomerExistance(CustomerContext context)
 		{
-			var customerExists = context.Customer.AsNoTracking().AsEnumerable().Any(x =>
-										(
-											x.Document.OnlyNumbers() == Customer.Document.OnlyNumbers() ||
-											(!string.IsNullOrEmpty(x.StateRegistration) && x.StateRegistration.OnlyNumbers() == Customer.StateRegistration.OnlyNumbers())
-										)
-										&& x.Id != Customer.Id);
-
+			var customerExists = context.Customer.AsNoTracking().AsEnumerable().Any(x => (x.Document.OnlyNumbers() == Customer.Document.OnlyNumbers() || (!string.IsNullOrEmpty(x.StateRegistration) && x.StateRegistration == Customer.StateRegistration)) && x.Id != Customer.Id);
 			if (customerExists) throw new Exception($"There's already a customer in the database with the same document or state registration");
 		}
 
@@ -222,7 +242,7 @@ namespace Cadaster.UI
 			if (!Validate()) return;
 
 			Customer.Name = textBoxName.Text;
-			Customer.StateRegistration = textBoxStateRegistration.Text;
+			Customer.StateRegistration = string.IsNullOrEmpty(textBoxStateRegistration.Text) ? null : textBoxStateRegistration.Text;
 			Customer.Email = textBoxEmail.Text;
 			Customer.BirthDate = dateTimePickerBirthDate.Value.ToInitial();
 			Customer.DocumentType = comboBoxDocumentType.GetSelectedItem<DocumentType>().Value;
