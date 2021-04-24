@@ -11,6 +11,12 @@ namespace Cadaster.UI
 {
 	public partial class CadasterForm : Form
 	{
+		#region Fields
+
+		private CamCaptureController camCapture;
+
+		#endregion Fields
+
 		#region Properties
 
 		public Customer Customer { get; set; }
@@ -40,6 +46,12 @@ namespace Cadaster.UI
 
 		private void buttonCamera_Click(object sender, EventArgs e)
 		{
+			TakePicture();
+		}
+
+		private void CadasterForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			camCapture?.Stop();
 		}
 
 		private void buttonLoadImage_Click(object sender, EventArgs e)
@@ -125,13 +137,18 @@ namespace Cadaster.UI
 			textBoxComplement.Enabled = !string.IsNullOrEmpty(Customer.City);
 		}
 
+		private void TakePicture()
+		{
+			camCapture = new CamCaptureController(pictureBox);
+			camCapture.Start();
+		}
+
 		private void LoadImage()
 		{
 			using (var openFileDialog = new OpenFileDialog())
 			{
-				openFileDialog.InitialDirectory = "c:\\Dowloads";
+				openFileDialog.InitialDirectory = "c:\\Downloads";
 				openFileDialog.Filter = "Image files|*.jpg;*.jpeg;*.png;*.gif";
-				openFileDialog.FilterIndex = 2;
 				openFileDialog.RestoreDirectory = true;
 
 				if (openFileDialog.ShowDialog() != DialogResult.OK) return;

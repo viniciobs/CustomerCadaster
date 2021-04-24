@@ -511,6 +511,7 @@ namespace Cadaster.UI
 			this.Name = "CadasterForm";
 			this.ShowIcon = false;
 			this.Text = "Customer";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CadasterForm_FormClosing);
 			this.panelPhoto.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
 			this.ResumeLayout(false);
