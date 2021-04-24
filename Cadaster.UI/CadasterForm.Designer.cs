@@ -193,17 +193,18 @@ namespace Cadaster.UI
 			// 
 			this.buttonLoadImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
 			this.buttonLoadImage.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+			this.buttonLoadImage.BackColor = System.Drawing.Color.Transparent;
 			this.buttonLoadImage.BackgroundImage = global::Cadaster.UI.Properties.Resources.Folder;
 			this.buttonLoadImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.buttonLoadImage.Cursor = System.Windows.Forms.Cursors.Hand;
 			this.buttonLoadImage.FlatAppearance.BorderSize = 0;
 			this.buttonLoadImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.buttonLoadImage.Location = new System.Drawing.Point(84, 228);
+			this.buttonLoadImage.Location = new System.Drawing.Point(80, 232);
 			this.buttonLoadImage.Margin = new System.Windows.Forms.Padding(0);
 			this.buttonLoadImage.Name = "buttonLoadImage";
-			this.buttonLoadImage.Size = new System.Drawing.Size(25, 24);
+			this.buttonLoadImage.Size = new System.Drawing.Size(20, 17);
 			this.buttonLoadImage.TabIndex = 12;
-			this.buttonLoadImage.UseVisualStyleBackColor = true;
+			this.buttonLoadImage.UseVisualStyleBackColor = false;
 			this.buttonLoadImage.Click += new System.EventHandler(this.buttonLoadImage_Click);
 			// 
 			// pictureBox
