@@ -18,6 +18,8 @@ namespace Cadaster.UI
 		private ToolTip toolTip;
 		private ICamCapture owner;
 
+		private byte[] bytes;
+
 		#endregion Fields
 
 		#region Constructor
@@ -56,8 +58,7 @@ namespace Cadaster.UI
 
 			CvInvoke.Imencode(".bmp", input, buffer);
 
-			var bytes = buffer.ToArray();
-
+			bytes = buffer.ToArray();
 			pictureBox.Image = bytes.ToImage();
 		}
 
@@ -97,7 +98,7 @@ namespace Cadaster.UI
 
 			DisplayEnableCameraOption();
 
-			owner.Stop();
+			owner.Stop(bytes);
 		}
 
 		private void DisplayEnableCameraOption()

@@ -19,10 +19,5 @@ namespace Cadaster.UI.Helpers
 		{
 			return Resources.Default;
 		}
-
-		public static byte[] ToByteArray(this Image image)
-		{
-			return null;
-		}
 	}
 }

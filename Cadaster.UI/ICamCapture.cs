@@ -2,6 +2,6 @@
 {
 	public interface ICamCapture
 	{
-		public void Stop();
+		public void Stop(byte[] data);
 	}
 }

@@ -316,10 +316,10 @@ namespace Cadaster.UI
 
 		#region ICamCapture
 
-		void ICamCapture.Stop()
+		void ICamCapture.Stop(byte[] data)
 		{
 			camCapture = null;
-			Customer.Photo = pictureBox.Image.ToByteArray();
+			Customer.Photo = data;
 		}
 
 		#endregion ICamCapture
