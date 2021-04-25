@@ -65,6 +65,13 @@ namespace Cadaster.UI
 			RemoveImage();
 		}
 
+		private void comboBoxDocumentType_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			var documentType = comboBoxDocumentType.GetSelectedItem<DocumentType>();
+
+			textBoxStateRegistration.Enabled = documentType == DocumentType.CNPJ;
+		}
+
 		private void buttonSave_Click(object sender, EventArgs e)
 		{
 			Finish();
@@ -196,6 +203,7 @@ namespace Cadaster.UI
 				if (documentType == DocumentType.CPF)
 				{
 					validation.Validate(labelDocument, Validator.ValidateCPF(textBoxDocument.Text));
+					validation.Validate(labelStateRegistration, true);
 				}
 				else
 				{
@@ -276,11 +284,11 @@ namespace Cadaster.UI
 			if (!Validate()) return;
 
 			Customer.Name = textBoxName.Text;
-			Customer.StateRegistration = string.IsNullOrEmpty(textBoxStateRegistration.Text) ? null : textBoxStateRegistration.Text;
 			Customer.Email = textBoxEmail.Text;
 			Customer.BirthDate = dateTimePickerBirthDate.Value.ToInitial();
 			Customer.DocumentType = comboBoxDocumentType.GetSelectedItem<DocumentType>().Value;
 			Customer.Document = textBoxDocument.Text;
+			Customer.StateRegistration = Customer.DocumentType == DocumentType.CNPJ ? textBoxStateRegistration.Text : null;
 			Customer.Phone = textBoxPhone.Text;
 			Customer.Sex = comboBoxSex.GetSelectedItem<Sex>().Value;
 			Customer.PostalCode = textBoxPostalCode.Text;
@@ -289,7 +297,7 @@ namespace Cadaster.UI
 			Customer.Burgh = textBoxBurgh.Text;
 			Customer.Street = textBoxStreet.Text;
 			Customer.Number = textBoxNumber.Text;
-			Customer.Complement = textBoxComplement.Text;
+			Customer.Complement = string.IsNullOrEmpty(textBoxComplement.Text) ? null : textBoxComplement.Text;
 
 			var isNewCadaster = isNew;
 

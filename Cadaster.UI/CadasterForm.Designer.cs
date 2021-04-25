@@ -444,6 +444,7 @@ namespace Cadaster.UI
 			this.comboBoxDocumentType.Name = "comboBoxDocumentType";
 			this.comboBoxDocumentType.Size = new System.Drawing.Size(148, 23);
 			this.comboBoxDocumentType.TabIndex = 7;
+			this.comboBoxDocumentType.SelectedIndexChanged += new System.EventHandler(this.comboBoxDocumentType_SelectedIndexChanged);
 			// 
 			// textBoxStateRegistration
 			// 
