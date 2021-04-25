@@ -1,7 +1,6 @@
 ﻿using System.Drawing;
 using Cadaster.UI.Properties;
 using System.IO;
-using System.Drawing.Imaging;
 
 namespace Cadaster.UI.Helpers
 {

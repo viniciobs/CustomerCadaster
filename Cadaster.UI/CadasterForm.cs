@@ -200,6 +200,7 @@ namespace Cadaster.UI
 				else
 				{
 					validation.Validate(labelDocument, Validator.ValidateCNPJ(textBoxDocument.Text));
+					validation.Validate(labelStateRegistration, !string.IsNullOrEmpty(textBoxStateRegistration.Text));
 				}
 			}
 
