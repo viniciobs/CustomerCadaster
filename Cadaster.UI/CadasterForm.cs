@@ -10,7 +10,7 @@ using Cadaster.UI.Properties;
 
 namespace Cadaster.UI
 {
-	public partial class CadasterForm : Form
+	public partial class CadasterForm : Form, ICamCapture
 	{
 		#region Fields
 
@@ -142,7 +142,9 @@ namespace Cadaster.UI
 
 		private void TakePicture()
 		{
-			camCapture = new CamCaptureController(pictureBox, buttonCamera, toolTip, buttonCamera_Click);
+			if (camCapture != null) return;
+
+			camCapture = new CamCaptureController(this, ref pictureBox, ref buttonCamera, toolTip);
 			camCapture.Start();
 		}
 
@@ -311,6 +313,16 @@ namespace Cadaster.UI
 				Reset();
 			}
 		}
+
+		#region ICamCapture
+
+		void ICamCapture.Stop()
+		{
+			camCapture = null;
+			Customer.Photo = pictureBox.Image.ToByteArray();
+		}
+
+		#endregion ICamCapture
 
 		#endregion Methods
 	}

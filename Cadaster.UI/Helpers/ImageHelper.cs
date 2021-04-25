@@ -1,6 +1,7 @@
 ﻿using System.Drawing;
 using Cadaster.UI.Properties;
 using System.IO;
+using System.Drawing.Imaging;
 
 namespace Cadaster.UI.Helpers
 {
@@ -17,6 +18,11 @@ namespace Cadaster.UI.Helpers
 		public static Image DefaultImage()
 		{
 			return Resources.Default;
+		}
+
+		public static byte[] ToByteArray(this Image image)
+		{
+			return null;
 		}
 	}
 }

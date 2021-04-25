@@ -16,36 +16,23 @@ namespace Cadaster.UI
 		private PictureBox pictureBox;
 		private Button button;
 		private ToolTip toolTip;
-
-		private Action<object, EventArgs> _button_click;
+		private ICamCapture owner;
 
 		#endregion Fields
 
-		#region Properties
-
-		private bool isCapture
-		{
-			get
-			{
-				return (bool)button.Tag;
-			}
-		}
-
-		#endregion Properties
-
 		#region Constructor
 
-		public CamCaptureController(PictureBox pictureBox, Button button, ToolTip toolTip, Action<object, EventArgs> buttonClick)
+		public CamCaptureController(ICamCapture owner, ref PictureBox pictureBox, ref Button button, ToolTip toolTip)
 		{
+			if (owner == null) throw new ArgumentNullException(nameof(owner));
 			if (pictureBox == null) throw new ArgumentNullException(nameof(pictureBox));
 			if (button == null) throw new ArgumentNullException(nameof(button));
 			if (toolTip == null) throw new ArgumentNullException(nameof(toolTip));
-			if (buttonClick == null) throw new ArgumentNullException(nameof(buttonClick));
 
+			this.owner = owner;
 			this.pictureBox = pictureBox;
 			this.button = button;
 			this.toolTip = toolTip;
-			_button_click = buttonClick;
 
 			Initialize();
 		}
@@ -76,14 +63,7 @@ namespace Cadaster.UI
 
 		private void button_Click(object sender, EventArgs e)
 		{
-			if (isCapture)
-			{
-				Capture();
-			}
-			else
-			{
-				Start();
-			}
+			Capture();
 		}
 
 		#endregion EventHandlers
@@ -91,8 +71,6 @@ namespace Cadaster.UI
 		private void Initialize()
 		{
 			capture = new VideoCapture(0, VideoCapture.API.DShow);
-
-			button.Click -= (sender, e) => _button_click(sender, e);
 			button.Click += button_Click;
 		}
 
@@ -106,10 +84,7 @@ namespace Cadaster.UI
 
 		private void Capture()
 		{
-			capture.ImageGrabbed -= ImageGrabbed;
-			capture.Stop();
-
-			DisplayEnableCameraOption();
+			Stop();
 		}
 
 		public void Stop()
@@ -118,24 +93,23 @@ namespace Cadaster.UI
 
 			capture.Stop();
 			capture.Dispose();
+			capture = null;
 
 			DisplayEnableCameraOption();
 
-			button.Click += (sender, e) => _button_click(sender, e);
+			owner.Stop();
 		}
 
 		private void DisplayEnableCameraOption()
 		{
 			toolTip.SetToolTip(button, Resources.EnableDeviceCamera);
 			button.BackgroundImage = Resources.Camera;
-			button.Tag = false;
 		}
 
 		private void DisplayCaptureImageOptiion()
 		{
 			toolTip.SetToolTip(button, Resources.CaptureImage);
 			button.BackgroundImage = Resources.Capture;
-			button.Tag = true;
 		}
 
 		#endregion Methods
