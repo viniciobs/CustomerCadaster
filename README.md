@@ -34,7 +34,9 @@ The image below shows the listage form.
 ![List](./List.PNG)    
 
 To create a new customer, click the New button or right click in the listview and choose New.    
-To delete a customer, select him/her at the listview, right click and select Delete option. Will be displayed a box asking for confirmation, then confirm or cancel the delete action.    
-To show users details, select the row in the listview and click the Show button or right click in the selected row and choose Show. Then, the customer details will be displayed for you to update or simply see more info as shown below.    
+
+<br />To delete a customer, select him/her at the listview, right click and select Delete option. Will be displayed a box asking for confirmation, then confirm or cancel the delete action.    
+
+<br />To show users details, select the row in the listview and click the Show button or right click in the selected row and choose Show. Then, the customer details will be displayed for you to update or simply see more info as shown below.    
 
 ![Details](./Detail.PNG)     
