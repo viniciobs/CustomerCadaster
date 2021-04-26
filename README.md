@@ -25,3 +25,10 @@ This application is a CRUD to manage customers data.
     Now that the connection string is properly defined, open the command line tool, access the solution folder and run the database update.
     
     > dotnet ef database update -p Cadaster.UI/Cadaster.UI.csproj    
+    
+# Usage
+
+The application allows to list customers filtering by its document and/or name.    
+The image below shows the listage form.    
+
+![List](./List.PNG)
