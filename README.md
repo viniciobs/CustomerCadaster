@@ -31,4 +31,8 @@ This application is a CRUD to manage customers data.
 The application allows to list customers filtering by its document and/or name.    
 The image below shows the listage form.    
 
-![List](./List.PNG)
+![List](./List.PNG)    
+
+To show users details, select the row in the listview and click the Show button or right click in the selected row and choose Show. Then, the customer details will be displayed for you to update or simply see more info as shown below.    
+
+![Details](./Detail.PNG)    
