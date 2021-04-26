@@ -18,8 +18,7 @@ This application is a CRUD to manage customers data.
    
 > {        
 >   "ConnectionStrings": {
->    "DbConn": "Server=<SERVER>;Database=CustomerCadaster;User=<USER>;Password=<Password>;"    
->    }    
+>    "DbConn": "Server=<SERVER>;Database=CustomerCadaster;User=<USER>;Password=<Password>;" }    
 > }    
 	    
 * Database
