@@ -40,3 +40,8 @@ To create a new customer, click the New button or right click in the listview an
 <br />
 
 ![Details](./Detail.PNG)     
+
+
+# EMGU
+
+The application allows to capture user image using the device's camera. To do this job, the application use the [EMGU](https://www.emgu.com/) library.
