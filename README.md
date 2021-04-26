@@ -16,11 +16,11 @@ This application is a CRUD to manage customers data.
 
     Create a appSettings.json file within the Cadaster.UI project and paste the code below replacingo with your data.    
    
-    > {    
-	  >   "ConnectionStrings": {
-		>     "DbConn": "Server=<SERVER>;Database=CustomerCadaster;User=<USER>;Password=<Password>;"
-	  >   }
-	  > }    
+> {    
+>    "ConnectionStrings": {
+>     "DbConn": "Server=<SERVER>;Database=CustomerCadaster;User=<USER>;Password=<Password>;"
+>   }
+> }    
 	    
 * Database
     
