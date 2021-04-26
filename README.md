@@ -22,5 +22,6 @@ This application is a CRUD to manage customers data.
 	    
 * Database
     
-    Now that the connection string is properly defined, open the command line tool, access the solution folder and run the database update
+    Now that the connection string is properly defined, open the command line tool, access the solution folder and run the database update.
+    
     > dotnet ef database update -p Cadaster.UI/Cadaster.UI.csproj    
